@@ -40,7 +40,6 @@ class SideBar extends Component {
         <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
         <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
         <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
       </div>
     );
   }
