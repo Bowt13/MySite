@@ -1,0 +1,16 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+div {
+  display: inline-block;
+  font: 0.9em "Press start 2P";
+  font-weight: 70;
+}
+
+button {
+  font: 0.9em "Press start 2P";
+}
+
+#root {
+  position: absolute;
+  top: -0px;
+  left: -0px;
+}
