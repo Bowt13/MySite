@@ -8,8 +8,8 @@ class SkillBar extends PureComponent {
 
   render() {
     return (
-      <div className='skillbar_wrapper'>
-        <div className='skillbar_filler'></div>
+      <div className='skillbar-wrapper'>
+        <div className={`skillbar-filler at-percentage-${this.props.percentage}`}></div>
       </div>
     );
   }

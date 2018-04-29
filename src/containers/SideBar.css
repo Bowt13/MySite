@@ -33,7 +33,7 @@
 .sideBar {
   postion: absolute;
   float: left;
-  width: 10vw;
+  width: 15vw;
   height: 100vh;
   background-color: blue;
 }

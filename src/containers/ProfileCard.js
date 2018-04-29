@@ -6,10 +6,10 @@ import './SkillsCard.css';
 
 
 
-class SkillsCard extends PureComponent {
+class ProfileCard extends PureComponent {
   state = {
     counter: 0,
-    dissed: false,
+    disabled: false,
   }
 
   scrollUp = () => {
@@ -17,9 +17,10 @@ class SkillsCard extends PureComponent {
       this.smoothScroll('up')
       this.setState({
         counter: 0,
-        dissed: true,
+        disabled: true,
       })
     }
+    setTimeout(this.setState({disabled: false}), 20)
   }
 
   scrollDown = () => {
@@ -27,11 +28,10 @@ class SkillsCard extends PureComponent {
       this.smoothScroll('down')
       this.setState({
         counter: this.state.counter+1,
-        dissed: true,
+        disabled: true,
       })
     }
-    console.log(this.state);
-    setTimeout(_ => {this.setState({dissed: false})}, 650)
+    setTimeout(this.setState({disabled: false}), 100000)
   }
 
   smoothScroll = (type) => {
@@ -43,9 +43,7 @@ class SkillsCard extends PureComponent {
         setInterval(function(){if(i !== (16)){document.getElementById('card-body').scrollBy(0, -(height)); i=i+1}}, 30);
         break;
       case 'down':
-        console.log('2');
         setInterval(function(){if(i !== 155){document.getElementById('card-body').scrollBy(0, (height/50)); i=i+1}}, 1);
-        setTimeout(_ => {this.setState({dissed: false})}, 650)
         break;
       default:
         break;
@@ -53,27 +51,11 @@ class SkillsCard extends PureComponent {
   }
 
   render() {
-    console.log(this.props.card);
-    const skills = [
-      {name: 'HTML5', percentage: 85},
-		  {name: 'CSS3', percentage: 105},
-			{name: 'ReactJS', percentage: 80},
-			{name: 'React Native', percentage: 40},
-      {name: 'Redux', percentage: 80},
-      {name: 'NodeJs', percentage: 70},
-      {name: 'JavaScript', percentage: 85},
-      {name: 'jQuery', percentage: 55},
-      {name: 'Restfull APIs', percentage: 70},
-      {name: 'Express', percentage: 70},
-			{name: 'TypeScript', percentage: 75},
-      {name: 'TypeORM', percentage: 75},
-      {name: 'Sql', percentage: 65},
-      {name: 'PostgreSql', percentage: 70},
-      {name: 'Sequelize', percentage: 65},
-      {name: 'Docker', percentage: 55},
-      {name: 'Git', percentage: 65},
-      {name: 'Ruby', percentage: 75},
-    ]
+    const profileInfo = {
+      name: 'Nigel Brown',
+      birthDate: '13-03-1990',
+
+    }
     const {ul, scroll} = this.state
     const {card} = this.props
     console.log(`ul-${ul}`);
@@ -82,39 +64,33 @@ class SkillsCard extends PureComponent {
         <div className={`card-${card}`}>
           <div className= 'card-header'>
               <p>
-                Skills:  <br/>
+                Profile:  <br/>
               </p>
           </div>
           <div className='card-body' id='card-body'>
-          {skills.map(skill => (
-            <div className='skills-body-content'>
-              <h3 style={{
+            <div className='skills-body-content' id='check'>
+              <p style={{
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
-              }}>-{skill.name}</h3>
-              <SkillBar percentage={skill.percentage}/>
+              }}>
+                Name: {profileInfo.name}<br/>
+                Birthdate: {profileInfo.birthDate}<br/>
+
+              </p>
+              <img src=''/>
             </div>
-          ))}
-          <div className='skills-body-content' id='check'>
-            <h3 style={{
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-            }}>-yeah</h3>
-            <SkillBar/>
-          </div>
           </div>
           {this.state.counter !== 5 &&
           <button
           className='skills-body-button'
           onClick={_ => this.scrollDown()}
-          disabled={this.state.dissed}
-          >down</button>
+          disabled={this.state.disabled} >down</button>
           }
           {this.state.counter === 5 &&
           <button
           className='skills-body-button'
           onClick={_ => this.scrollUp()}
-          disabled={this.state.dissed}>u[p]</button>
+          disabled={this.state.disabled} >up</button>
           }
         </div>
       </div>
@@ -122,4 +98,4 @@ class SkillsCard extends PureComponent {
   }
 }
 
-export default SkillsCard;
+export default ProfileCard;
