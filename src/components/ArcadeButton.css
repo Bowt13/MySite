@@ -1,0 +1,86 @@
+.arcadebutton {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 10px;
+  -webkit-transform: perspective(330px) rotateX(60deg);
+}
+
+.button-bottom {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50px;
+  box-shadow: inset 10px -20px 30px 0px #ab0203, inset -12px 8px 30px #ff7576;
+}
+
+.button-top-middle-pressed {
+  position: relative;
+  text-align: center;
+  top: 5px;
+  left: -1px;
+  width: 90px;
+  height: 0px;
+}
+
+.button-top-middle-unpressed {
+  position: relative;
+  text-align: center;
+  top: -80px;
+  left: -0px;
+  width: 91px;
+  height: 180px;
+  background-color: #650202;
+  border-radius: 50px;
+  border-bottom: 1px solid black;
+  -webkit-transform: perspective(54px) rotateX(-10deg) skewX(-0.5deg);
+  box-shadow: inset 10px -20px 30px 0px #ab0203, inset -12px 8px 30px #ff7576;
+}
+
+.button-top-pressed {
+  position: relative;
+  text-align: center;
+  top: -1px;
+  left: 1px;
+  width: 82px;
+  height: 82px;
+  background-color: red;
+  border-radius: 50px;
+  box-shadow: inset 10px -20px 30px 0px #ab0203, inset -12px 8px 30px #ff7576;
+}
+
+.button-top-unpressed {
+  position: relative;
+  text-align: center;
+  top: -5px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  background-color: red;
+  border-radius: 50px;
+  box-shadow: inset 10px -20px 30px 0px #ab0203, inset -12px 8px 30px #ff7576;
+}
+
+
+.button-center-pressed {
+  position: relative;
+  top: 5px;
+  left: 0px;
+  width: 89%;
+  height: 89%;
+  background-color: red;
+  border-radius: 50px;
+  box-shadow: inset -10px 20px 30px 0px #ab0203, inset 10px -30px 30px #ff7576;
+}
+
+.button-center-unpressed {
+  position: relative;
+  top: 5px;
+  left: 0px;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+  border-radius: 50px;
+  box-shadow: inset -10px 20px 30px 0px #ab0203, inset 10px -30px 30px #ff7576;
+}

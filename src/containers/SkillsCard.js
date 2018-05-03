@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 
 import SkillBar from '../components/SkillBar'
 
+import './Card.css'
 import './SkillsCard.css';
 
 
@@ -40,11 +41,12 @@ class SkillsCard extends PureComponent {
     switch (type) {
       case 'up':
         console.log('1')
-        setInterval(function(){if(i !== (16)){document.getElementById('card-body').scrollBy(0, -(height)); i=i+1}}, 30);
+        setInterval(function(){if(i !== (11)){document.getElementById('card-body').scrollBy(0, -(height)); i=i+1}}, 30);
+        setTimeout(_ => {this.setState({dissed: false})}, 460)
         break;
       case 'down':
         console.log('2');
-        setInterval(function(){if(i !== 155){document.getElementById('card-body').scrollBy(0, (height/50)); i=i+1}}, 1);
+        setInterval(function(){if(i !== 127){document.getElementById('card-body').scrollBy(0, (height/50)); i=i+1}}, 1);
         setTimeout(_ => {this.setState({dissed: false})}, 650)
         break;
       default:
@@ -78,21 +80,17 @@ class SkillsCard extends PureComponent {
     const {card} = this.props
     console.log(`ul-${ul}`);
     return (
-      <div>
+      <div className='card'>
         <div className={`card-${card}`}>
           <div className= 'card-header'>
-              <p>
-                Skills:  <br/>
+              <p className= 'card-title'>
+                Skills:<br/>
               </p>
           </div>
           <div className='card-body' id='card-body'>
           {skills.map(skill => (
             <div className='skills-body-content'>
-              <h3 style={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-              }}>-{skill.name}</h3>
-              <SkillBar percentage={skill.percentage}/>
+              <SkillBar percentage={skill.percentage} name={skill.name}/>
             </div>
           ))}
           <div className='skills-body-content' id='check'>
@@ -105,6 +103,7 @@ class SkillsCard extends PureComponent {
           </div>
           {this.state.counter !== 5 &&
           <button
+          id='buttonDown'
           className='skills-body-button'
           onClick={_ => this.scrollDown()}
           disabled={this.state.dissed}
@@ -112,9 +111,10 @@ class SkillsCard extends PureComponent {
           }
           {this.state.counter === 5 &&
           <button
+          id='buttonUp'
           className='skills-body-button'
           onClick={_ => this.scrollUp()}
-          disabled={this.state.dissed}>u[p]</button>
+          disabled={this.state.dissed}>up</button>
           }
         </div>
       </div>

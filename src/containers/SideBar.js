@@ -4,38 +4,34 @@ import './SideBar.css';
 class SideBar extends Component {
 
   handleClick = (type) => {
-  switch (type) {
-    case 'profileInfo':
-    console.log(type)
-      this.props.handleClick('profileInfo', 'visable')
-      this.props.handleClick('skills', 'hidden')
-      break;
-    case 'skills':
-      this.props.handleClick('skills', 'visable')
-      this.props.handleClick('profileInfo', 'hidden')
-      break;
-    default:
+    switch (type) {
+      case 'profileInfo':
       console.log(type)
-      break;
+        this.props.handleClick('profileInfo', 'visable')
+        this.props.handleClick('skills', 'hidden')
+        break;
+      case 'skills':
+        this.props.handleClick('skills', 'visable')
+        this.props.handleClick('profileInfo', 'hidden')
+        break;
+      default:
+        console.log(type)
+        break;
+    }
   }
 
+  componentDidMount(){
+    this.bio.focus();
   }
+
   render() {
     return (
       <div className='sideBar'>
-        <button className='sideBar-button' style={{
-          marginTop: '4px',
-        }} onClick={_ => this.handleClick('profileInfo')}>Profile</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('skills')}>Skills</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
-        <button className='sideBar-button' onClick={_ => this.handleClick('card')}>Card</button>
+        <button id='bio' ref={(bio) => { this.bio = bio; }} className='sideBar-button'
+        onClick={_ => this.handleClick('profileInfo')}>Bio</button>
+        <button id='skills' className='sideBar-button' onClick={_ => this.handleClick('skills')}>Skills</button>
+        <button id='projects' className='sideBar-button' onClick={_ => this.handleClick('card')}>Projects</button>
+        <button id='1Player' className='sideBar-button' onClick={_ => this.handleClick('card')}>1 Player</button>
       </div>
     );
   }

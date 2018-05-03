@@ -1,0 +1,43 @@
+.board-container {
+  position: relative;
+}
+
+.dashboard-top {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: 617.6px;
+  left: 160px;
+  height: 20vh;
+  width: 80vw;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(330px) rotateX(40deg);
+  border-radius: 20px;
+}
+
+.button-box {
+  position: relative;
+  display: inline-block;
+  height: 120px;
+  width: 400px;
+  left: 50%;
+  top: 15%;
+  background-color: black;
+  -webkit-transform: perspective(1080px) rotateX(40deg);
+  border-radius: 30px;
+}
+
+.dashboard-bottom {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: 607.6px;
+  left: 44px;
+  height: 20vh;
+  width: 1512px;
+  border: 2px solid black;
+  background-color: grey;
+}

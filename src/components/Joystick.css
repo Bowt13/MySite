@@ -1,0 +1,125 @@
+.joystick {
+ position: relative;
+ display: inline-block;
+ vertical-align: bottom;
+ height: 230px;
+ width: auto;
+ top: 430px;
+ left: -900px;
+}
+
+.joystick-ball {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 120px;
+  border: 1px solid green;
+  background-color: red;
+  z-index: 1;
+  box-shadow: inset 10px -20px 30px 0px #ab0203, inset -12px 8px 30px #ff7576;
+}
+
+.ball-left {
+  top: -15px;
+  right: 40px;
+  box-shadow: inset 10px -24px 30px 0px #ab0203, inset -12px 6px 30px #ff7576;
+}
+
+.ball-right {
+  top: -15px;
+  left: 40px;
+  box-shadow: inset 10px -17px 30px 0px #ab0203, inset -12px 10px 30px #ff7576;
+}
+
+.ball-up {
+  top: -10px;
+  left: 5px;
+  width: 140px;
+  height: 140px;
+  box-shadow: inset 7px -16px 30px 0px #ab0203, inset -9px 14px 30px #ff7576;
+}
+
+.ball-down {
+  top: 10px;
+  left: -5px;
+  width: 160px;
+  height: 160px;
+  box-shadow: inset 8px -28px 30px 0px #ab0203, inset -10px 14px 30px 0px #ff7576;
+}
+
+.joystick-stick {
+  position: relative;
+  height: 200px;
+  width: 40px;
+  top: 100px;
+  margin-left: -95px;
+  border-left: 0.02px solid white;
+  border-right: 0.02px solid white;
+  background-color: black;
+  -webkit-transform: perspective(200px) rotateX(50deg);
+}
+
+.stick-left {
+  top: 115px;
+  left: -20px;
+  height: 220px;
+  transform: rotate(-10deg) perspective(200px) rotateX(60deg);
+}
+
+.stick-right {
+  top: 115px;
+  left: 20px;
+  height: 220px;
+  transform: rotate(10deg) perspective(200px) rotateX(60deg);
+}
+
+.stick-up {
+  height: 210px;
+  top: 110px;
+  left: 10px;
+  -webkit-transform: perspective(180px) rotateX(50deg);
+}
+
+.stick-down {
+  height: 210px;
+  top: 110px;
+  left: -10px;
+  -webkit-transform: perspective(180px) rotateX(50deg);
+}
+
+.joystick-connect {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  top: 150px;
+  left: -60px;
+  border-top-right-radius: 140px;
+  border-top-left-radius: 140px;
+  border-bottom-right-radius: 160px;
+  border-bottom-left-radius: 160px;
+  background-color: black;
+  z-index: 1;
+  -webkit-transform: perspective(35px) rotateX(20deg);
+}
+
+.connect-left {
+  top: 130px;
+  left: -64.2px;
+  transform: rotate(-10deg) perspective(35px) rotateX(20deg);
+}
+
+.connect-right {
+  top: 130px;
+  left: -55.8px;
+  transform: rotate(10deg) perspective(35px) rotateX(20deg);
+}
+
+.connect-up {
+  top: 139.2px;
+  left: -50px;
+}
+
+.connect-down {
+  top: 140.8px;
+  left: -70px;
+}

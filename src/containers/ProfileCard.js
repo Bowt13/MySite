@@ -2,7 +2,8 @@ import React, {PureComponent} from 'react'
 
 import SkillBar from '../components/SkillBar'
 
-import './SkillsCard.css';
+import './Card.css'
+import './ProfileCard.css';
 
 
 
@@ -54,44 +55,46 @@ class ProfileCard extends PureComponent {
     const profileInfo = {
       name: 'Nigel Brown',
       birthDate: '13-03-1990',
-
+      training: 'Full-Stack',
+      training2: 'web developer',
+      trainingAt: 'Codaisseur Academy'
     }
     const {ul, scroll} = this.state
     const {card} = this.props
     console.log(`ul-${ul}`);
     return (
-      <div>
+      <div className='card'>
         <div className={`card-${card}`}>
           <div className= 'card-header'>
-              <p>
-                Profile:  <br/>
+              <p className= 'card-title'>
+                Bio:<br/>
               </p>
           </div>
-          <div className='card-body' id='card-body'>
-            <div className='skills-body-content' id='check'>
-              <p style={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-              }}>
-                Name: {profileInfo.name}<br/>
-                Birthdate: {profileInfo.birthDate}<br/>
-
-              </p>
-              <img src=''/>
+          <div className='card-body profile-card' id='card-body'>
+            <div className='profile-body-content' id='check'>
+              <div className='content-left'>
+                <p>
+                  Name:<br/>
+                  Birthdate:<br/>
+                  <br/>
+                  Training:<br/>
+                  <br/>
+                  At:<br/>
+                </p>
+              </div>
+              <div className='content-right'>
+                <p>
+                  {profileInfo.name}<br/>
+                  {profileInfo.birthDate}<br/>
+                  <br/>
+                  {profileInfo.training}<br/>
+                  {profileInfo.training2}<br/>
+                  {profileInfo.trainingAt}<br/>
+                </p>
+              </div>
+              <img className='bio-pic' src={require('../img/BioPix3.gif')}/>
             </div>
           </div>
-          {this.state.counter !== 5 &&
-          <button
-          className='skills-body-button'
-          onClick={_ => this.scrollDown()}
-          disabled={this.state.disabled} >down</button>
-          }
-          {this.state.counter === 5 &&
-          <button
-          className='skills-body-button'
-          onClick={_ => this.scrollUp()}
-          disabled={this.state.disabled} >up</button>
-          }
         </div>
       </div>
     );
