@@ -76,16 +76,29 @@ class App extends PureComponent {
           joystick: 'left'
         })
         if(this.state.profileInfo === 'visable'){
-          document.getElementById(this.state.sidebar).focus()
+          if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
+            document.getElementById(this.state.sidebar).focus()
+            document.getElementById('bio').click()
+          }
         }
         if(this.state.skills === 'visable'){
-          document.getElementById(this.state.sidebar).focus()
+          if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
+            document.getElementById(this.state.sidebar).focus()
+            document.getElementById('skills').click()
+          }
         }
         if(this.state.projects === 'visable'){
-          document.getElementById('projects').focus()
+          if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
+            document.getElementById(this.state.sidebar).focus()
+            document.getElementById('projects').click()
+          }
         }
         if(this.state.onePlayer === 'visable'){
-          document.getElementById('1Player').focus()
+          if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
+            console.log(this.state.sidebar);
+            document.getElementById(this.state.sidebar).focus()
+            document.getElementById('1Player').click()
+          }
         }
         break;
       case "ArrowRight": case "d":
@@ -96,7 +109,6 @@ class App extends PureComponent {
           this.setState({
             sidebar: document.activeElement.id
           })
-          console.log(document.getElementById(this.state.sidebar));
         }
         if(this.state.skills === 'visable') {
           if(document.getElementById('buttonUp')){
@@ -132,6 +144,11 @@ class App extends PureComponent {
           setTimeout(function () {document.getElementById('buttonDown').focus()}, 650)
           setTimeout(this.handleKeyUp, 30)
           }
+        if (document.activeElement.id !== 'buttonUp' && document.activeElement.id !== 'buttonDown'){
+          this.setState({
+            sidebar: document.activeElement.id,
+          })
+        }
         break;
       default:
         return;
@@ -180,6 +197,7 @@ class App extends PureComponent {
           </div>
         </div>
         <Dashboard joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>
+        <MachineCabinet/>
       </div>
     );
   }

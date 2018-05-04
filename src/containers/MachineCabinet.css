@@ -1,0 +1,266 @@
+.cabinet {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: inline-block;
+}
+
+.left-sidepanel-top {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: -90px;
+  left: -120px;
+  height: 100px;
+  width: 800px;
+  border-top: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(600px) rotate(102.1deg) rotateX(40deg);
+  z-index: 0;
+}
+
+.left-sidepanel-top-top {
+  position: absolute;
+  top: -386px;
+  left: 228px;
+  height: 1150px;
+  width: 68px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  background-color: purple;
+  border-top-right-radius: 8px;
+  -webkit-transform: perspective(1200px) rotate(0deg) rotateX(65deg) skewX(-7.4deg);
+}
+
+.left-sidepanel-bottom {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: 359px;
+  left: -670px;
+  height: 440px;
+  width: 150px;
+  border-bottom: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(9000px) rotate(90.4deg) rotateX(40deg) skewX(20deg);
+  z-index: 0;
+}
+
+.left-sidepanel-bottom-top {
+  position: relative;
+  display: inline-block;
+  top: 301px;
+  left: -971px;
+  height: 396px;
+  width: 141px;
+  border-top: 10px solid black;
+  border-right: 6px solid black;
+  border-left: 6px solid black;
+  background-color: purple;
+  border-top-right-radius: 9px;
+  -webkit-transform: perspective(900px) rotate(0deg) rotateX(80deg) skewX(-24.8deg);
+}
+
+.left-frontpanel {
+  position: absolute;
+  top: 686px;
+  left: -1px;
+  height: 200px;
+  width: 34px;
+  border-top: 4px solid black;
+  background-color: purple;
+  z-index: 1;
+  -webkit-transform:skewX(-0.3deg);
+}
+
+.right-sidepanel-top {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: -533px;
+  left: 920px;
+  height: 100px;
+  width: 800px;
+  border-top: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(600px) rotate(calc(77.9deg + 180deg)) rotateX(40deg);
+  z-index: 0;
+}
+
+.right-sidepanel-top-top {
+  position: absolute;
+  top: -380px;
+  left: 1302px;
+  height: 1150px;
+  width: 68px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  background-color: purple;
+  border-top-right-radius: 8px;
+  -webkit-transform: perspective(1200px) rotate(0deg) rotateX(65deg) skewX(6.7deg);
+  z-index: 0;
+}
+
+.right-sidepanel-bottom {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: calc(359px - 440px);
+  left: 529px;
+  height: 442px;
+  width: 150px;
+  border-top: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(9000px) rotate(90.4deg) rotateX(40deg) skewX(-20deg);
+  z-index: 0;
+}
+
+.right-sidepanel-bottom-top {
+  position: absolute;
+  display: inline-block;
+  top: 390px;
+  left: 1455px;
+  height: 486px;
+  width: 142px;
+  border-top: 10px solid black;
+  border-right: 6px solid black;
+  border-left: 6px solid black;
+  background-color: purple;
+  border-top-right-radius: 9px;
+  -webkit-transform: perspective(900px) rotate(0deg) rotateX(80deg) skewX(calc(24.8deg + -2deg));
+  z-index: 0;
+}
+
+.right-frontpanel {
+  position: absolute;
+  top: 694px;
+  right: -4px;
+  height: 200px;
+  width: 34px;
+  border-top: 4px solid black;
+  background-color: purple;
+  z-index: 6;
+  -webkit-transform:skewX(-0.4deg);
+}
+
+.toppanel {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  top: -35px;
+  left: calc(50vw - 490px );
+  height: 100px;
+  width: 980px;
+  border: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  background-color: grey;
+  -webkit-transform: perspective(330px) rotate(180deg) rotateX(60deg);
+  z-index: 1;
+}
+
+.left-toppanel-side {
+  position: absolute;
+  display: inline-block;
+  top: -20px;
+  left: 250px;
+  height: 152px;
+  width: 90px;
+  background-color: grey;
+  -webkit-transform: perspective(440px) rotate(90deg) rotateX(40deg) skewX(-12.85deg);
+  z-index: 1;
+}
+
+.right-toppanel-side {
+  position: absolute;
+  display: inline-block;
+  top: -23px;
+  right: 240px;
+  height: 152px;
+  width: 90px;
+  background-color: grey;
+  -webkit-transform: perspective(440px) rotate(-90deg) rotateX(40deg) skewX(12.85deg);
+  z-index: 1;
+}
+
+.left-toppanel-side-botom {
+  position: absolute;
+  display: inline-block;
+  top: -16px;
+  left: 210px;
+  height: 215px;
+  width: 66px;
+  border-top: 15px solid black;
+  border-right: 7px solid black;
+  border-left: 6px solid black;
+  background-color: purple;
+  -webkit-transform: perspective(500px) rotate(0deg) rotateX(94.2deg) skewY(-17.9deg) skewX(-24.4deg);
+  z-index: 1;
+}
+
+.right-toppanel-side-botom {
+  position: absolute;
+  display: inline-block;
+  top: -18px;
+  right: 207px;
+  height: 215px;
+  width: 66px;
+  border-top: 15px solid black;
+  border-right: 7px solid black;
+  border-left: 6px solid black;
+  background-color: purple;
+  -webkit-transform: perspective(500px) rotate(0deg) rotateX(94.2deg) skewY(17.9deg) skewX(24.4deg);
+  z-index: 2;
+}
+
+.left-toppanel-front {
+  position: absolute;
+  display: inline-block;
+  top: -9px;
+  left: 172px;
+  height: 102px;
+  width: 60px;
+  border: 1px solid black;
+  border-top: 0px;
+  border-bottom: 1.5px solid black;
+  background-color: purple;
+  -webkit-transform: perspective(200px) rotate(0deg) rotateX(-10deg) skewX(8deg) skewY(-2.5deg);
+  z-index: 2;
+}
+
+.right-toppanel-front {
+  position: absolute;
+  display: inline-block;
+  top: -10px;
+  right: 170px;
+  height: 102px;
+  width: 60px;
+  border: 1px solid black;
+  border-top: 0px;
+  border-bottom: 1.5px solid black;
+  background-color: purple;
+  -webkit-transform: perspective(200px) rotate(0deg) rotateX(-10deg) skewX(-8deg) skewY(2.5deg);
+  z-index: 2;
+}
+
+.remover1 {
+  position: absolute;
+  top: 80px;
+  left: 121px;
+  background-color: white;
+  height: 30px;
+  width: 60px;
+  z-index: 3;
+  -webkit-transform: perspective(0px) rotate(0deg) rotateX(0deg) skewX(10deg) skewY(0deg);
+}
+
+.remover2 {
+  position: absolute;
+  top: 80px;
+  right: 119px;
+  background-color: white;
+  height: 30px;
+  width: 60px;
+  z-index: 3;
+  -webkit-transform: perspective(0px) rotate(0deg) rotateX(0deg) skewX(-8deg) skewY(0deg);
+}

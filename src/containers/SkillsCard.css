@@ -11,13 +11,6 @@
   z-index: 1;
 }
 
-.skills-body-button:hover {
-  top: -4px;
-  background-color: purple;
-  animation: buttonFade 0.4s;
-  box-shadow: 0px 4px black;
-}
-
 .skills-body-button:focus {
   top: -4px;
   background-color: purple;
