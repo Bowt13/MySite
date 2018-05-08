@@ -11,6 +11,7 @@ button {
 }
 
 #root {
+  cursor: none;
   font: 0.9em "Press start 2P";
   position: absolute;
   top: -0px;
@@ -53,6 +54,7 @@ button {
 
 .machine:focus {
   background-color: white;
+  animation: none;
 }
 
 .space-invader{

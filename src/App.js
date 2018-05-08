@@ -3,10 +3,13 @@ import './App.css';
 
 //Containers
   import SideBar from './containers/SideBar.js'
-  import SkillsCard from './containers/SkillsCard.js'
-  import ProfileCard from './containers/ProfileCard.js'
-  import Dashboard from './containers/Dashboard.js'
-  import MachineCabinet from './containers/MachineCabinet.js'
+  //Cards
+  import SkillsCard from './containers/cards/SkillsCard.js'
+  import ProfileCard from './containers/cards/ProfileCard.js'
+  import ProjectsCard from './containers/cards/ProjectsCard.js'
+
+  import Dashboard from './containers/machine/Dashboard.js'
+  import MachineCabinet from './containers/machine/MachineCabinet.js'
 
 class App extends PureComponent {
   state={
@@ -18,6 +21,16 @@ class App extends PureComponent {
     arcadeButton: 'unpressed',
     counter: 0,
     sidebar: 'bio',
+  }
+
+  handleMachine = (event) => {
+    event.preventDefault
+    if(event.nativeEvent.screenX === 0){
+      return
+    }
+    else {
+      document.getElementById('bio').focus()
+    }
   }
 
   handleClick = (type, value) => {
@@ -82,9 +95,12 @@ class App extends PureComponent {
           }
         }
         if(this.state.skills === 'visable'){
-          if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
+          if(document.activeElement.id === 'buttonDown'){
             document.getElementById(this.state.sidebar).focus()
             document.getElementById('skills').click()
+          }
+          if(document.activeElement.id === 'buttonUp'){
+            document.getElementById('buttonDown').focus()
           }
         }
         if(this.state.projects === 'visable'){
@@ -109,46 +125,71 @@ class App extends PureComponent {
           this.setState({
             sidebar: document.activeElement.id
           })
-        }
-        if(this.state.skills === 'visable') {
-          if(document.getElementById('buttonUp')){
+          if(this.state.skills === 'visable') {
+            document.getElementById('buttonDown').focus()
+          }
+        }else {
+          if(document.activeElement.id === 'buttonDown' && this.state.skills === 'visable'){
             document.getElementById('buttonUp').focus()
           }
-          else {
-          document.getElementById('buttonDown').focus()}
         }
         break;
 
       case " ": case "Enter":
         this.setState({
           arcadeButton: 'pressed',
+          lastClick: document.activeElement.id
         })
-        if (document.activeElement.id === 'buttonDown' && this.state.counter < 4) {
-          this.setState({
-            counter: this.state.counter + 1
-          })
-          setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
-          setTimeout(this.handleKeyUp, 30)
+        switch (document.activeElement.id) {
+          case 'buttonUp':
+            this.setState({
+              counter: this.state.counter - 1
+            })
+            console.log(this.state.counter)
+            if (this.state.counter > 1) {
+              setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
+              setTimeout(this.handleKeyUp, 30)
+            }
+            else {
+              setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
+              setTimeout(this.handleKeyUp, 30)
+            }
+            break;
+          case 'buttonDown':
+            this.setState({
+              counter: this.state.counter + 1
+            })
+            if (this.state.counter < 4) {
+              setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
+              setTimeout(this.handleKeyUp, 30)
+            }
+            else {
+              setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
+              setTimeout(this.handleKeyUp, 30)
+            }
+            break;
+          default:
+            break;
         }
-        if (document.activeElement.id === 'buttonDown' && this.state.counter === 4) {
-          this.setState({
-            counter: this.state.counter + 1
-          })
-          setTimeout(function () {if(document.getElementById('buttonUp')){document.getElementById('buttonUp').focus()}}, 670)
-          setTimeout(this.handleKeyUp, 30)
-        }
-        if (document.activeElement.id === 'buttonUp' && this.state.counter === 5) {
-          this.setState({
-            counter: 0
-          })
-          setTimeout(function () {document.getElementById('buttonDown').focus()}, 650)
-          setTimeout(this.handleKeyUp, 30)
-          }
-        if (document.activeElement.id !== 'buttonUp' && document.activeElement.id !== 'buttonDown'){
-          this.setState({
-            sidebar: document.activeElement.id,
-          })
-        }
+        // if (document.activeElement.id === 'buttonDown' && this.state.counter < 4) {
+        //   this.setState({
+        //     counter: this.state.counter + 1
+        //   })
+        //   setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
+        //   setTimeout(this.handleKeyUp, 30)
+        // }
+        // if (document.activeElement.id === 'buttonUp' && this.state.counter > 0) {
+        //   this.setState({
+        //     counter: this.state.counter - 1
+        //   })
+        //   setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
+        //   setTimeout(this.handleKeyUp, 30)
+        //   }
+        // if (document.activeElement.id !== 'buttonUp' && document.activeElement.id !== 'buttonDown'){
+        //   this.setState({
+        //     sidebar: document.activeElement.id,
+        //   })
+        // }
         break;
       default:
         return;
@@ -162,7 +203,7 @@ class App extends PureComponent {
       })
       return;
     }
-    if (event.key === 'Enter'){
+    if (event.key === 'Enter' || event.key === ' '){
       this.setState({
         arcadeButton: 'unpressed',
       })
@@ -171,10 +212,14 @@ class App extends PureComponent {
       this.setState({
         arcadeButton: 'unpressed',
       })
+      if(document.activeElement.id !== 'buttonDown' || document.activeElement.id !== 'buttonUp'){
+        document.getElementById(this.state.lastClick).focus()
+        document.getElementById(this.state.lastClick).click()
+      }
       if (document.getElementById('buttonDown') && document.activeElement.id === 'buttonDown' && this.state.counter <= 4){
         setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
       }
-      if (document.getElementById('buttonDown')&& document.activeElement.id === 'buttonDown' && this.state.counter === 5){
+      if (document.getElementById('buttonDown') && document.activeElement.id === 'buttonDown' && this.state.counter === 5){
         setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
       }
     }
@@ -188,12 +233,14 @@ class App extends PureComponent {
       <div className='machine' id='machine' tabindex="0"
         onKeyDown={this.handleKeydown}
         onKeyUp={this.handleKeyUp}
+        onClick={this.handleMachine}
       >
         <div className='screen-holder'>
           <div className='screen'>
             <SideBar handleClick={this.handleClick} cardState={this.state.skills}/>
             <SkillsCard card={this.state.skills}/>
             <ProfileCard card={this.state.profileInfo}/>
+            <ProjectsCard card={this.state.projects}/>
           </div>
         </div>
         <Dashboard joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>

@@ -60,5 +60,5 @@
 
 .sideBar-button:active {
   animation: buttonClick 1s;
-  background-color: blue;
+  background-color: purple;
 }
