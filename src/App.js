@@ -8,7 +8,7 @@ import './App.css';
   import ProfileCard from './containers/cards/ProfileCard.js'
   import ProjectsCard from './containers/cards/ProjectsCard.js'
 
-  import Dashboard from './containers/machine/Dashboard.js'
+
   import MachineCabinet from './containers/machine/MachineCabinet.js'
 
 class App extends PureComponent {
@@ -141,11 +141,16 @@ class App extends PureComponent {
           lastClick: document.activeElement.id
         })
         switch (document.activeElement.id) {
+          case 'skills':
+          this.setState({
+            counter: 0
+          })
           case 'buttonUp':
-            this.setState({
-              counter: this.state.counter - 1
-            })
-            console.log(this.state.counter)
+            if(this.state.counter > 0){
+              this.setState({
+                counter: this.state.counter - 1
+              })
+            }
             if (this.state.counter > 1) {
               setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
               setTimeout(this.handleKeyUp, 30)
@@ -156,10 +161,12 @@ class App extends PureComponent {
             }
             break;
           case 'buttonDown':
-            this.setState({
-              counter: this.state.counter + 1
-            })
-            if (this.state.counter < 4) {
+            if(this.state.counter <= 4){
+              this.setState({
+                counter: this.state.counter + 1
+              })
+            }
+            if (this.state.counter <= 4) {
               setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
               setTimeout(this.handleKeyUp, 30)
             }
@@ -171,25 +178,6 @@ class App extends PureComponent {
           default:
             break;
         }
-        // if (document.activeElement.id === 'buttonDown' && this.state.counter < 4) {
-        //   this.setState({
-        //     counter: this.state.counter + 1
-        //   })
-        //   setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
-        //   setTimeout(this.handleKeyUp, 30)
-        // }
-        // if (document.activeElement.id === 'buttonUp' && this.state.counter > 0) {
-        //   this.setState({
-        //     counter: this.state.counter - 1
-        //   })
-        //   setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
-        //   setTimeout(this.handleKeyUp, 30)
-        //   }
-        // if (document.activeElement.id !== 'buttonUp' && document.activeElement.id !== 'buttonDown'){
-        //   this.setState({
-        //     sidebar: document.activeElement.id,
-        //   })
-        // }
         break;
       default:
         return;
@@ -237,14 +225,17 @@ class App extends PureComponent {
       >
         <div className='screen-holder'>
           <div className='screen'>
-            <SideBar handleClick={this.handleClick} cardState={this.state.skills}/>
-            <SkillsCard card={this.state.skills}/>
-            <ProfileCard card={this.state.profileInfo}/>
-            <ProjectsCard card={this.state.projects}/>
+            <div className='screen-noise-effect'></div>
+            <div className='screen-scan-effect'></div>
+            <div className='screen-blur-effect'>
+              <SideBar handleClick={this.handleClick} cardState={{skills: this.state.skills, bio: this.state.profileInfo, projects: this.state.projects}} />
+              <SkillsCard card={this.state.skills}/>
+              <ProfileCard card={this.state.profileInfo}/>
+              <ProjectsCard card={this.state.projects}/>
+            </div>
           </div>
         </div>
-        <Dashboard joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>
-        <MachineCabinet/>
+        <MachineCabinet joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>
       </div>
     );
   }

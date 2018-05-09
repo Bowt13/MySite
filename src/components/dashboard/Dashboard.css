@@ -1,15 +1,17 @@
 .board-container {
-  position: relative;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
 }
 
 .dashboard-top {
   position: relative;
-  display: inline-block;
-  vertical-align: bottom;
-  top: 618px;
-  left: 165px;
-  height: 20vh;
-  width: 1270px;
+  top: 76%;
+  height: 24%;
+  margin-left: calc(50% - (81%/2));
+  width: 81%;
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -21,8 +23,8 @@
 .button-box {
   position: relative;
   display: inline-block;
-  height: 120px;
-  width: 400px;
+  height: 70%;
+  width: 21%;
   left: 50%;
   top: 15%;
   background-color: black;
@@ -31,11 +33,9 @@
 }
 
 .dashboard-bottom {
-  position: relative;
-  display: inline-block;
-  vertical-align: bottom;
-  top: 610.3px;
-  left: 31.8px;
+  position: absolute;
+  top: 96.6%;
+  left: 1.4%;
   height: 201px;
   width: 1547px;
   border-top: 2px solid black;

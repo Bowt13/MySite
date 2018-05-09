@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 
 import './MachineCabinet.css';
 
-class Dashboard extends Component {
+//Components
+import Dashboard from '../../components/dashboard/Dashboard.js'
+
+class MachineCabinet extends Component {
   render() {
     return (
       <div className='cabinet'>
         <div className='toppanel'></div>
+        <Dashboard joystick={this.props.joystick.toLowerCase()} arcadeButton={this.props.arcadeButton}/>
+
 
         <div className='left-toppanel-side'></div>
         <div className= 'remover1'></div>
@@ -34,4 +39,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default MachineCabinet;

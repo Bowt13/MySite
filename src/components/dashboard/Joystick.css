@@ -1,11 +1,9 @@
 .joystick {
- position: relative;
- display: inline-block;
- vertical-align: bottom;
- height: 230px;
+ position: absolute;
+ height: 80%;
  width: auto;
- top: 430px;
- left: -900px;
+ top: 50%;
+ left: 25%;
 }
 
 .joystick-ball {

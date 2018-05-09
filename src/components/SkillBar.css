@@ -19,18 +19,16 @@
   display: inline-block;
   align-self: right;
   float: left;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  width: 89%;
-  height: 40%;
+  margin-left: 5%;
+  width: 93%;
+  height: 37%;
   background-color: black;
-  border-radius: 4px;
 }
 
 .skillbar-filler {
   margin-left: 0.5%;
   margin-top: 0.35%;
-  height: 90%;
+  height: 82%;
   background: linear-gradient(to right, #f00100, #3aff15);
   border-radius: 4px;
 }

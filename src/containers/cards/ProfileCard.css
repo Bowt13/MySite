@@ -6,7 +6,7 @@
 .profile-body-content {
   width: 100%;
   height: 100%;
-  margin-left: 0.5vw;
+  margin-left: 1%;
   display: inline-block;
   overflow: hidden;
 }
@@ -14,8 +14,8 @@
 .bio-pic {
   position: relative;
   display: inline-block;
-  top: -230px;
-  left: 66%;
+  top: -70%;
+  left: 67.3%;
   margin-right: 20px;
   height: 28vh;
   width: auto;
@@ -33,7 +33,7 @@
   position: relative;
   width: 40%;
   display: inline-block;
-  margin-left: 3vw;
+  margin-left: 8%;
   text-align: left;
   float:left;
 }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './Dashboard.css';
 
 //Components
-import Joystick from '../../components/Joystick.js'
-import ArcadeButton from '../../components/ArcadeButton.js'
+import Joystick from './Joystick.js'
+import ArcadeButton from './ArcadeButton.js'
 
 class Dashboard extends Component {
   render() {
@@ -15,8 +15,7 @@ class Dashboard extends Component {
           </div>
         </div>
         <Joystick position={this.props.joystick}/>
-        <div className='dashboard-bottom'>
-        </div>
+        <div className='dashboard-bottom'></div>
       </div>
     );
   }
