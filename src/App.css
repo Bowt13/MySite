@@ -11,7 +11,6 @@ button {
 }
 
 #root {
-  cursor: none;
   font: 0.9em "Press start 2P";
   position: absolute;
   top: -0px;
@@ -22,9 +21,9 @@ button {
 .screen-holder {
   position: absolute;
   top: 0px;
-  left: calc(50% - (30%));
-  height: 76%;
-  width: 60%;
+  left: calc(50vw - (30vw));
+  height: 75.7vh;
+  width: 60vw;
   background-color: grey;
   -webkit-transform: perspective(500px) rotateX(10deg);
   border: 2px solid black;
@@ -42,6 +41,7 @@ button {
   background-color: #263238;
   border-radius: 20%;
   box-shadow: inset 4px -5px 100px -30px white, inset -4px 5px 100px -0px black;
+  z-index: 1;
 }
 
 .screen-noise-effect {
@@ -55,6 +55,7 @@ button {
   background-size: 110%;
   z-index: 100;
   opacity: 0.022;
+  z-index: 9;
 }
 
 .screen-scan-effect {
@@ -65,7 +66,8 @@ button {
   background-image: url('./img/screenEffects/white-noise-effect3.gif');
   background-repeat: no-repeat;
   background-size:cover;
-  opacity: 0.015;
+  opacity: 0.035;
+  z-index: 10;
 }
 
 .screen-blur-effect {
@@ -122,4 +124,12 @@ button {
     height: 1em;
     overflow: hidden;
     margin: 50px 0 70px 65px;
+  }
+
+  @media screen and (max-height: 845px){
+
+    .screen-holder {
+      height: 76vh;
+    }
+
   }

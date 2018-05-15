@@ -1,0 +1,39 @@
+.project {
+  width: 94%;
+  height: 100%;
+  display: inline-block;
+  float: left;
+}
+
+.project-title {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  width: 100%;
+  height: 10%;
+  float: left;
+}
+
+.project-tag {
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+.github-icon {
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.project-image {
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin-right: calc(30% - (55% / 2));
+  height: 45%;
+  width: 45%;
+  background-color: purple;
+}

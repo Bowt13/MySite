@@ -1,0 +1,16 @@
+.game {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  margin-top: 6%;
+  margin-left: calc(50% - (80% / 2));
+  text-align: center;
+}
+
+.tile {
+  height: 100px;
+}
+
+#canvas {
+  background-color: white;
+}

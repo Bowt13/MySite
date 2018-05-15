@@ -1,11 +1,11 @@
-.skills-body-content {
+.projects-body-content {
   width: 100%;
   margin-left: 1%;
   display: inline-block;
-  height: calc(100% / 3);
+  height: calc(100%);
   overflow: hidden;
 }
 
-#skill-card-body {
+#project-card-body {
   margin-top: 0.5%;
 }

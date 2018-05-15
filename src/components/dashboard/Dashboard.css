@@ -1,17 +1,17 @@
 .board-container {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   top: 0px;
   left: 0px;
 }
 
 .dashboard-top {
-  position: relative;
-  top: 76%;
-  height: 24%;
-  margin-left: calc(50% - (81%/2));
-  width: 81%;
+  position: absolute;
+  top: 76vh;
+  height: 24vh;
+  margin-left: calc(50vw - (82vw/2));
+  width: 82vw;
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -34,11 +34,30 @@
 
 .dashboard-bottom {
   position: absolute;
-  top: 96.6%;
+  top: 95.6%;
   left: 1.4%;
   height: 201px;
   width: 1547px;
   border-top: 2px solid black;
   background-color: purple;
   z-index: 1;
+}
+
+@media screen and (max-height: 845px){
+
+  .dashboard-top {
+    margin-left: calc(50vw - (81vw/2));
+    width: 81vw;
+  }
+
+  .dashboard-bottom {
+    position: absolute;
+    top: 96.2%;
+    left: 1.4%;
+    height: 201px;
+    width: 1547px;
+    border-top: 2px solid black;
+    background-color: purple;
+    z-index: 1;
+  }
 }

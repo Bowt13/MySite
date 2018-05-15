@@ -1,15 +1,13 @@
 import React, {PureComponent} from 'react'
 
-import './SkillBar.css';
+import './Skill.css';
 
-
-
-class SkillBar extends PureComponent {
+class Skill extends PureComponent {
 
   render() {
     return (
-      <div className='skillbar'>
-        <h3 className='skillbar-title'>-{this.props.name}</h3>
+      <div className='skill'>
+        <h3 className='skill-title'>-{this.props.name}</h3>
         <div className='skillbar-wrapper'>
           <div className={`skillbar-filler at-percentage-${this.props.percentage}`}></div>
         </div>
@@ -18,4 +16,4 @@ class SkillBar extends PureComponent {
   }
 }
 
-export default SkillBar;
+export default Skill;

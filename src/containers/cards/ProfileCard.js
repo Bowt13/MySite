@@ -55,7 +55,8 @@ class ProfileCard extends PureComponent {
       birthDate: '13-03-1990',
       training: 'Full-Stack',
       training2: 'web developer',
-      trainingAt: 'Codaisseur Academy'
+      trainingAt: 'Codaisseur Academy',
+      linkedIn: 'https://www.linkedin.com/in/nigel-brown-b7983a151/',
     }
     const {ul} = this.state
     const {card} = this.props

@@ -122,3 +122,12 @@
   top: 140.8px;
   left: -70px;
 }
+
+@media screen and (max-height: 845px){
+
+  .joystick {
+   top: 45%;
+   left: 25%;
+  }
+
+}

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 
-import SkillBar from '../../components/SkillBar'
+import Skill from '../../components/skills/Skill'
 
 import './Card.css'
 import './SkillsCard.css';
@@ -13,46 +13,7 @@ class SkillsCard extends PureComponent {
     dissed: false,
   }
 
-  scrollUp = () => {
-      if(this.state.counter > 0){
-      this.smoothScroll('up')
-      this.setState({
-        counter: this.state.counter-1,
-        dissed: true,
-      })
-    }
-  }
-
-  scrollDown = () => {
-      if(this.state.counter <5){
-      this.smoothScroll('down')
-      this.setState({
-        counter: this.state.counter+1,
-        dissed: true,
-      })
-    }
-    setTimeout(_ => {this.setState({dissed: false})}, 650)
-  }
-
-  smoothScroll = (type) => {
-    let height = document.getElementById('check').clientHeight
-    let i = 0
-    switch (type) {
-      case 'up':
-        setInterval(function(){if(i !== 127){document.getElementById('card-body').scrollBy(0, -(height/100)); i=i+1}}, 1);
-        setTimeout(_ => {this.setState({dissed: false})}, 460)
-        break;
-      case 'down':
-        setInterval(function(){if(i !== 127){document.getElementById('card-body').scrollBy(0, (height/50)); i=i+1}}, 1);
-        setTimeout(_ => {this.setState({dissed: false})}, 650)
-        break;
-      default:
-        break;
-    }
-  }
-
   render() {
-    console.log(this.props.card);
     const skills = [
       {name: 'HTML5', percentage: 85},
 		  {name: 'CSS3', percentage: 105},
@@ -84,31 +45,15 @@ class SkillsCard extends PureComponent {
                 Skills:<br/>
               </p>
           </div>
-          <div className='card-body' id='card-body'>
-          {skills.map(skill => (
-            <div className='skills-body-content'>
-              <SkillBar percentage={skill.percentage} name={skill.name}/>
-            </div>
-          ))}
-          <div className='skills-body-content' id='check'>
-            <h3 style={{
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-            }}>-yeah</h3>
-            <SkillBar/>
+          <img className={`chevron-top-${this.props.chevronTop}`} src={require(`../../img/chevron-${this.props.chevronTop}.gif`)} alt="chevron"/>
+          <div className='card-body' id='skill-card-body' tabindex='10'>
+            {skills.map(skill => (
+              <div className='skills-body-content'>
+                <Skill name={skill.name} percentage={skill.percentage}/>
+              </div>
+            ))}
           </div>
-          </div>
-          <button
-          id='buttonDown'
-          className='skills-body-button'
-          onClick={_ => this.scrollDown()}
-          disabled={this.state.dissed}
-          >down</button>
-          <button
-          id='buttonUp'
-          className='skills-body-button'
-          onClick={_ => this.scrollUp()}
-          disabled={this.state.dissed}>up</button>
+          <img className={`chevron-bottom-${this.props.chevronBottom}`} src={require(`../../img/chevron-${this.props.chevronBottom}.gif`)} alt="chevron"/>
         </div>
       </div>
     );

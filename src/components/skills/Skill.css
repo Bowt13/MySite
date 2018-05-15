@@ -1,11 +1,11 @@
-.skillbar {
+.skill {
   width: 94%;
   height: 100%;
   display: inline-block;
   float: left;
 }
 
-.skillbar-title {
+.skill-title {
   position: relative;
   display: inline-block;
   font-size: 20px;

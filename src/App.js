@@ -2,25 +2,36 @@ import React, { PureComponent } from 'react';
 import './App.css';
 
 //Containers
-  import SideBar from './containers/SideBar.js'
+  import Sidebar from './containers/Sidebar.js'
+  import IntroScreen from './containers/IntroScreen.js'
   //Cards
   import SkillsCard from './containers/cards/SkillsCard.js'
   import ProfileCard from './containers/cards/ProfileCard.js'
   import ProjectsCard from './containers/cards/ProjectsCard.js'
-
+  //games
+  import SpaceShooter from './containers/games/spaceShooter/Game.js'
 
   import MachineCabinet from './containers/machine/MachineCabinet.js'
 
 class App extends PureComponent {
   state={
-    profileInfo: 'hidden',
-    skills: 'hidden',
-    projects: 'hidden',
-    onePlayer: 'hidden',
-    joystick: '',
-    arcadeButton: 'unpressed',
-    counter: 0,
-    sidebar: 'bio',
+    //visabilaty//
+      introScreen: 'visable',
+      sidebarVisability: 'hidden',
+      profileInfo: 'hidden',
+      skills: 'hidden',
+      projects: 'hidden',
+      onePlayer: 'hidden',
+    //controlls/
+      joystick: '',
+      arcadeButton: 'unpressed',
+    //misc//
+      sidebarType: 'default',
+      counter: 0,
+      sidebar: 'bio',
+      chevronTop: 'off',
+      chevronBottom: 'off',
+      game: false,
   }
 
   handleMachine = (event) => {
@@ -29,26 +40,50 @@ class App extends PureComponent {
       return
     }
     else {
-      document.getElementById('bio').focus()
+      if(document.getElementById('bio')){
+        document.getElementById('bio').focus()
+      }
     }
   }
 
   handleClick = (type, value) => {
+    if(type === 'projects'){
+      switch (value) {
+        case 'visable':
+          this.setState({
+            sidebarType: 'projects'
+          })
+          setTimeout(function() {document.getElementById('RPS').focus()}, 50)
+          break;
+        case 'back':
+          this.setState({
+            sidebarType: 'default'
+          })
+          setTimeout(function() {document.getElementById('bio').focus()}, 50)
+          break;
+        default:
+          break;
+      }
+    }
+    else{
       this.setState({
         [type]: value
       })
-      console.log(this.state)
+    }
     }
 
   handleKeydown = (event) => {
     switch (event.key) {
+      //DOWN//
       case "ArrowDown": case "s":
         this.setState({
           joystick: 'down',
         })
         switch (document.activeElement.id) {
           case 'machine':
-            document.getElementById('bio').focus()
+            if(document.getElementById('bio')){
+              document.getElementById('bio').focus()
+            }
             break;
           case 'bio':
             document.getElementById('skills').focus()
@@ -56,37 +91,80 @@ class App extends PureComponent {
           case 'skills':
             document.getElementById('projects').focus()
             break;
+          case 'skill-card-body':
+            this.scrollDown()
+            this.setState({
+              chevronBottom: 'on',
+            })
+            break;
           case 'projects':
-            document.getElementById('1Player').focus()
+            document.getElementById('games').focus()
+            break;
+          case 'project-card-body':
+            this.scrollDown()
+            this.setState({
+              chevronBottom: 'on',
+            })
+            break;
+          case 'RPS':
+            document.getElementById('SEA').focus()
+            break;
+          case 'SEA':
+            document.getElementById('back').focus()
             break;
           default:
           break;
         }
         break;
+
+      //UP//
       case "ArrowUp": case "w":
         this.setState({
           joystick: 'up'
         })
         switch (document.activeElement.id) {
           case 'machine':
-            document.getElementById('bio').focus()
+            if(document.getElementById('bio')){
+            document.getElementById('bio').focus()}
             break;
           case 'skills':
             document.getElementById('bio').focus()
             break;
+          case 'skill-card-body':
+            this.scrollUp()
+            this.setState({
+              chevronTop: 'on',
+            })
+            break;
           case 'projects':
             document.getElementById('skills').focus()
             break;
-          case '1Player':
+          case 'project-card-body':
+            this.scrollUp()
+            this.setState({
+              chevronTop: 'on',
+            })
+            break;
+          case 'games':
             document.getElementById('projects').focus()
+            break;
+          case 'SEA':
+            document.getElementById('RPS').focus()
+            break;
+          case 'back':
+            document.getElementById('SEA').focus()
             break;
           default:
           break;
         }
         break;
+
+      //LEFT//
       case "ArrowLeft": case "a":
         this.setState({
-          joystick: 'left'
+          joystick: 'left',
+          chevronBottom: 'off',
+          chevronTop: 'off',
         })
         if(this.state.profileInfo === 'visable'){
           if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
@@ -95,12 +173,9 @@ class App extends PureComponent {
           }
         }
         if(this.state.skills === 'visable'){
-          if(document.activeElement.id === 'buttonDown'){
+          if(document.activeElement.id === 'skill-card-body'){
             document.getElementById(this.state.sidebar).focus()
             document.getElementById('skills').click()
-          }
-          if(document.activeElement.id === 'buttonUp'){
-            document.getElementById('buttonDown').focus()
           }
         }
         if(this.state.projects === 'visable'){
@@ -113,70 +188,40 @@ class App extends PureComponent {
           if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
             console.log(this.state.sidebar);
             document.getElementById(this.state.sidebar).focus()
-            document.getElementById('1Player').click()
-          }
-        }
-        break;
-      case "ArrowRight": case "d":
-        this.setState({
-          joystick: 'right'
-        })
-        if(document.activeElement.id !== 'buttonDown' && document.activeElement.id !== 'buttonUp'){
-          this.setState({
-            sidebar: document.activeElement.id
-          })
-          if(this.state.skills === 'visable') {
-            document.getElementById('buttonDown').focus()
-          }
-        }else {
-          if(document.activeElement.id === 'buttonDown' && this.state.skills === 'visable'){
-            document.getElementById('buttonUp').focus()
+            document.getElementById('games').click()
           }
         }
         break;
 
+      //RIGHT//
+      case "ArrowRight": case "d":
+        this.setState({
+          joystick: 'right'
+        })
+        if(document.activeElement.id !== 'skill-card-body' || document.activeElement.id !== 'project-card-body'){
+          this.setState({
+            sidebar: document.activeElement.id
+          })
+          if(this.state.skills === 'visable') {
+            document.getElementById('skill-card-body').focus()
+          }
+          if(this.state.projects === 'visable') {
+            document.getElementById('project-card-body').focus()
+          }
+        }
+        break;
+
+      //ACCEPT//
       case " ": case "Enter":
         this.setState({
           arcadeButton: 'pressed',
           lastClick: document.activeElement.id
         })
-        switch (document.activeElement.id) {
-          case 'skills':
+        if (document.activeElement.id === 'project-card-body'){
+          if(document.getElementById('project-card-body').scrollTop < 287.5)
           this.setState({
-            counter: 0
+            sidebarType: 'projects'
           })
-          case 'buttonUp':
-            if(this.state.counter > 0){
-              this.setState({
-                counter: this.state.counter - 1
-              })
-            }
-            if (this.state.counter > 1) {
-              setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
-              setTimeout(this.handleKeyUp, 30)
-            }
-            else {
-              setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
-              setTimeout(this.handleKeyUp, 30)
-            }
-            break;
-          case 'buttonDown':
-            if(this.state.counter <= 4){
-              this.setState({
-                counter: this.state.counter + 1
-              })
-            }
-            if (this.state.counter <= 4) {
-              setTimeout(function () {document.getElementById('buttonDown').focus()}, 670)
-              setTimeout(this.handleKeyUp, 30)
-            }
-            else {
-              setTimeout(function () {document.getElementById('buttonUp').focus()}, 670)
-              setTimeout(this.handleKeyUp, 30)
-            }
-            break;
-          default:
-            break;
         }
         break;
       default:
@@ -185,6 +230,16 @@ class App extends PureComponent {
   }
 
   handleKeyUp = (event) => {
+    if (event.key === "ArrowDown") {
+      this.setState({
+        chevronBottom: 'off',
+      })
+    }
+    if (event.key === "ArrowUp") {
+      this.setState({
+        chevronTop: 'off',
+      })
+    }
     if (!event){
       this.setState({
         arcadeButton: 'unpressed',
@@ -195,6 +250,12 @@ class App extends PureComponent {
       this.setState({
         arcadeButton: 'unpressed',
       })
+      if(this.state.introScreen === 'visable'){
+        this.setState({
+          introScreen: 'between',
+        })
+        setTimeout(this.handleIntroScreen, 1900)
+      }
     }
     if (event.key === ' '){
       this.setState({
@@ -216,9 +277,40 @@ class App extends PureComponent {
     })
   }
 
+  scrollUp = () => {
+    if(document.getElementById('skill-card-body')){
+      document.getElementById('skill-card-body').scrollBy(0, -13)
+    }
+    if(document.getElementById('project-card-body')){
+      document.getElementById('project-card-body').scrollBy(0, -13)
+      console.log(document.getElementById('project-card-body').scrollTop)
+    }
+  }
+
+  scrollDown = () => {
+    if(document.getElementById('skill-card-body')){
+      document.getElementById('skill-card-body').scrollBy(0, 13)
+    }
+    if(document.getElementById('project-card-body')){
+      document.getElementById('project-card-body').scrollBy(0, 13)
+      console.log(document.getElementById('project-card-body').scrollTop)
+    }
+  }
+
+  handleIntroScreen = () => {
+    this.setState({
+      introScreen: 'hidden',
+      sidebarVisability: 'visable'
+    })
+  }
+
+  componentDidMount() {
+    document.getElementById('machine').focus()
+  }
+
   render() {
     return (
-      <div className='machine' id='machine' tabindex="0"
+        <div className='machine' id='machine' tabindex="0"
         onKeyDown={this.handleKeydown}
         onKeyUp={this.handleKeyUp}
         onClick={this.handleMachine}
@@ -228,10 +320,20 @@ class App extends PureComponent {
             <div className='screen-noise-effect'></div>
             <div className='screen-scan-effect'></div>
             <div className='screen-blur-effect'>
-              <SideBar handleClick={this.handleClick} cardState={{skills: this.state.skills, bio: this.state.profileInfo, projects: this.state.projects}} />
-              <SkillsCard card={this.state.skills}/>
+            {this.state.game &&
+              <div>
+              <IntroScreen visabilaty={this.state.introScreen}/>
+              <Sidebar
+                type={this.state.sidebarType}
+                handleClick={this.handleClick}
+                cardState={{skills: this.state.skills, bio: this.state.profileInfo, projects: this.state.projects}}
+                visabilaty={this.state.sidebarVisability}/>
               <ProfileCard card={this.state.profileInfo}/>
-              <ProjectsCard card={this.state.projects}/>
+              <SkillsCard card={this.state.skills} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
+              <ProjectsCard card={this.state.projects} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
+              </div>
+            }
+            <SpaceShooter/>
             </div>
           </div>
         </div>

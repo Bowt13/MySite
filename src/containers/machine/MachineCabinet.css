@@ -2,8 +2,8 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: inline-block;
 }
 
@@ -23,10 +23,10 @@
 
 .left-sidepanel-top-top {
   position: absolute;
-  top: -386px;
-  left: 228px;
-  height: 1150px;
-  width: 68px;
+  top: -55.7%;
+  left: 14.5%;
+  height: 150%;
+  width: 4.3%;
   border-right: 1px solid black;
   border-left: 1px solid black;
   background-color: purple;
@@ -35,16 +35,16 @@
 }
 
 .left-sidepanel-bottom {
-  position: relative;
+  position: absolute;
   display: inline-block;
   vertical-align: bottom;
-  top: 359px;
-  left: -670px;
-  height: 440px;
-  width: 150px;
+  top: 61.2%;
+  left: 4.37%;
+  height: 45%;
+  width: 15%;
   border-bottom: 2px solid black;
   background-color: grey;
-  -webkit-transform: perspective(9000px) rotate(90.4deg) rotateX(40deg) skewX(20deg);
+  -webkit-transform: perspective(9000px) rotate(90.3deg) rotateX(40deg) skewX(20deg);
   z-index: 0;
 }
 
@@ -65,10 +65,10 @@
 
 .left-frontpanel {
   position: absolute;
-  top: 686px;
+  top: 78.1%;
   left: -1px;
-  height: 200px;
-  width: 34px;
+  height: 23%;
+  width: 2.4%;
   border-top: 4px solid black;
   background-color: purple;
   z-index: 1;
@@ -104,13 +104,13 @@
 }
 
 .right-sidepanel-bottom {
-  position: relative;
+  position: absolute;
   display: inline-block;
   vertical-align: bottom;
-  top: calc(359px - 440px);
-  left: 529px;
-  height: 442px;
-  width: 150px;
+  top: 61.4%;
+  left: calc(100% - 4.17% - 14.54%);
+  height: 45%;
+  width: 15%;
   border-top: 2px solid black;
   background-color: grey;
   -webkit-transform: perspective(9000px) rotate(90.4deg) rotateX(40deg) skewX(-20deg);
@@ -120,10 +120,10 @@
 .right-sidepanel-bottom-top {
   position: absolute;
   display: inline-block;
-  top: 390px;
-  left: 1455px;
-  height: 486px;
-  width: 142px;
+  top: 44.4%;
+  left: 90.9%;
+  height: 55%;
+  width: 8.85%;
   border-top: 10px solid black;
   border-right: 6px solid black;
   border-left: 6px solid black;
@@ -135,7 +135,7 @@
 
 .right-frontpanel {
   position: absolute;
-  top: 694px;
+  top: 78.9%;
   right: -4px;
   height: 200px;
   width: 34px;
@@ -265,4 +265,29 @@
   width: 60px;
   z-index: 3;
   -webkit-transform: perspective(0px) rotate(0deg) rotateX(0deg) skewX(-8deg) skewY(0deg);
+}
+
+@media screen and (max-height: 845px){
+
+  .left-frontpanel {
+    top: 77.7%;
+    left: -1px;
+    height: 23%;
+    width: 2.65%;
+  }
+
+  .right-frontpanel {
+    top: 78.1%;
+    right: 0%;
+    height: 30%;
+    width: 2.2%;
+  }
+
+  .right-sidepanel-bottom-top {
+    top: 42.2%;
+    left: 90.55%;
+    height: 57.6%;
+    width: 8.60%;
+  }
+
 }
