@@ -5,12 +5,13 @@ import React, {PureComponent} from 'react'
 //Classes
   import SpriteSheet from './SpriteSheet.js'
   import Compositor from './Compositor.js'
+  import Camera from './Camera.js'
+
 //Functions
   import {
     loadImage,
     loadLevel,
     loadBackgroundSprites,
-    loadCharSprites,
   } from './Loaders.js'
   import {
     drawGame,
@@ -18,11 +19,18 @@ import React, {PureComponent} from 'react'
   import {
     createBackgroundLayer,
     createCharLayer,
+    createCollisionLayer,
   } from './Layers.js'
+  import {
+    createCharacter
+  } from './Entities.js'
+  import {
+    setupKeyboard
+  } from './Input.js'
 
 class SpaceShooter extends PureComponent {
   state = {
-    level: 2,
+    levels: 1,
     world: 1,
     canvasHeight: '100',
     canvasWidth: '100',
@@ -40,26 +48,21 @@ class SpaceShooter extends PureComponent {
     this.initCanvas()
     const tileSet = require('../../../img/games/spaceShooter/tileset.png')
     const characterSet = require('../../../img/games/spaceShooter/character.gif')
-    const {level, world, canvasWidth, canvasHeight} = this.state
+    const {levels, world, canvasWidth, canvasHeight} = this.state
     const canvas = document.getElementById('canvas')
     const context = canvas.getContext('2d')
-    const charPos = {
-      x: 0,
-      y: 0,
-    }
-
     Promise.all([
-      loadBackgroundSprites(tileSet),
-      loadCharSprites(characterSet),
-      loadLevel(`level${level}`, world)
+      loadLevel(`level${levels}`, world, context, {width: canvasWidth, height: canvasHeight}),
+      createCharacter(characterSet),
     ])
-    .then(([backgroundSprites, charSprites, level]) => {
-      const comp = new Compositor()
-      const backgroundLayer = createBackgroundLayer(level.backgrounds, context, backgroundSprites, {width: canvasWidth, height: canvasHeight})
-      const charLayer = createCharLayer(charSprites, charPos)
-      comp.layers.push(backgroundLayer)
-      comp.layers.push(charLayer)
-      drawGame(charPos, context, charSprites, comp)
+    .then(([level, char, something]) => {
+      const camera = new Camera()
+      window.camera = camera
+      char.pos.set(0, 0)
+      level.comp.layers.push(createCollisionLayer(level))
+      level.entities.add(char)
+      const input = setupKeyboard(char)
+      drawGame(context, level, camera)
     })
   }
 

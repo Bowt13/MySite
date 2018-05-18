@@ -49,6 +49,15 @@ export const world1 = {
             28,30,
           ]
         ]
+      },
+      {
+        "tile": "ground",
+        "ranges": [
+          [
+            40,41,
+            27,28,
+          ]
+        ]
       }
     ]
   }

@@ -1,5 +1,19 @@
 import {world1} from './levels/world1'
-import SpriteSheet from './SpriteSheet.js'
+import Level from './levels/Level.js'
+
+import {
+  createBackgroundLayer,
+  createCharLayer,
+} from './Layers.js'
+import {
+  createCharacter
+} from './Entities.js'
+import {
+  loadBackgroundSprites,
+} from './Sprites.js'
+
+const tileSet = require('../../../img/games/spaceShooter/tileset.png')
+const characterSet = require('../../../img/games/spaceShooter/character.gif')
 
 export function loadImage(url) {
   return new Promise(resolve => {
@@ -11,32 +25,38 @@ export function loadImage(url) {
   })
 }
 
-export function loadLevel(name, world) {
-  switch (world) {
-    case 1:
-      return world1[name]
-    case 2:
-      return world1[name]
-    default:
-
-  }
-}
-
-export function loadBackgroundSprites(tileSet) {
-  return loadImage(tileSet)
-  .then(img => {
-    const sprites = new SpriteSheet(img, 16, 16)
-    sprites.defineTile('ground', 0, 0,)
-    sprites.defineTile('sky', 3, 23,)
-    return sprites
+function createTiles(level, backgrounds){
+  backgrounds.forEach(background => {
+    background.ranges.forEach(([x1, x2, y1, y2]) => {
+      for(let x = x1; x < x2; x++){
+        for(let y = y1; y < y2; y++){
+            level.tiles.set(x, y, {name: background.tile})
+        }
+      }
+    })
   })
 }
 
-export function loadCharSprites(tileSet) {
-  return loadImage(tileSet)
-  .then(img => {
-    const sprites = new SpriteSheet(img, 16, 16)
-    sprites.define('idle', 276, 44, 16, 16)
-    return sprites
+
+export function loadLevel(name, world, context, size) {
+  let levelSpec
+
+  const level = new Level()
+
+  levelSpec = world1[name]
+  return Promise.all([
+    loadBackgroundSprites(tileSet),
+  ])
+  .then(([backgroundSprites]) => {
+
+    createTiles(level, levelSpec.backgrounds)
+
+    const backgroundLayer = createBackgroundLayer(level, context, backgroundSprites, size)
+    level.comp.layers.push(backgroundLayer)
+
+    const charLayer = createCharLayer(level.entities, context)
+    level.comp.layers.push(charLayer)
+
+    return level
   })
 }
