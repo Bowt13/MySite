@@ -320,7 +320,7 @@ class App extends PureComponent {
             <div className='screen-noise-effect'></div>
             <div className='screen-scan-effect'></div>
             <div className='screen-blur-effect'>
-            {this.state.game &&
+            {!this.state.game &&
               <div>
               <IntroScreen visabilaty={this.state.introScreen}/>
               <Sidebar
@@ -333,7 +333,9 @@ class App extends PureComponent {
               <ProjectsCard card={this.state.projects} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
               </div>
             }
-            <SpaceShooter/>
+            {this.state.game &&
+              <SpaceShooter/>
+            }
             </div>
           </div>
         </div>
