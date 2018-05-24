@@ -53,13 +53,17 @@ class App extends PureComponent {
           this.setState({
             sidebarType: 'projects'
           })
-          setTimeout(function() {document.getElementById('RPS').focus()}, 50)
+          //Not needed in Alphav0.8
+          //setTimeout(function() {document.getElementById('RPS').focus()}, 50)
+          document.getElementById('machine').focus()
           break;
         case 'back':
           this.setState({
             sidebarType: 'default'
           })
-          setTimeout(function() {document.getElementById('bio').focus()}, 50)
+          //Not needed in Alphav0.8
+          //setTimeout(function() {document.getElementById('bio').focus()}, 50)
+          document.getElementById('machine').focus()
           break;
         default:
           break;
@@ -84,6 +88,9 @@ class App extends PureComponent {
             if(document.getElementById('bio')){
               document.getElementById('bio').focus()
             }
+            if(document.getElementById('RPS')){
+              document.getElementById('RPS').focus()
+            }
             break;
           case 'bio':
             document.getElementById('skills').focus()
@@ -98,7 +105,7 @@ class App extends PureComponent {
             })
             break;
           case 'projects':
-            document.getElementById('games').focus()
+            //document.getElementById('games').focus()
             break;
           case 'project-card-body':
             this.scrollDown()
@@ -175,20 +182,20 @@ class App extends PureComponent {
         if(this.state.skills === 'visable'){
           if(document.activeElement.id === 'skill-card-body'){
             document.getElementById(this.state.sidebar).focus()
-            document.getElementById('skills').click()
+            //document.getElementById('skills').click()
           }
         }
         if(this.state.projects === 'visable'){
           if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
             document.getElementById(this.state.sidebar).focus()
-            document.getElementById('projects').click()
+            //document.getElementById('projects').click()
           }
         }
         if(this.state.onePlayer === 'visable'){
           if(document.activeElement.id === 'buttonUp' || document.activeElement.id === 'buttonDown'){
             console.log(this.state.sidebar);
             document.getElementById(this.state.sidebar).focus()
-            document.getElementById('games').click()
+            //document.getElementById('games').click()
           }
         }
         break;
@@ -277,14 +284,47 @@ class App extends PureComponent {
     })
   }
 
+  handleScrollClick = (dir) => {
+    var scrolling
+    switch (dir) {
+      case 'up':
+        this.scrollUp()
+        this.setState({
+          chevronTop: 'on',
+        })
+        break;
+      case 'down':
+        // scrolling = setInterval(this.scrollDown, 100)
+        this.setState({
+          chevronBottom: 'on',
+        })
+        // while(this.state.chevronBottom === 'on'){
+        //   setTimeout(console.log(1), 100)
+        //   setTimeout(this.scrollDown, 100)
+        // }
+        break;
+      case 'cancel':
+      console.log('cancel');
+        clearInterval(scrolling)
+        this.setState({
+          chevronBottom: 'off',
+        })
+        break;
+      default:
+
+    }
+  }
+
   scrollUp = () => {
+    console.log('scrollin');
     if(document.getElementById('skill-card-body')){
       document.getElementById('skill-card-body').scrollBy(0, -13)
+      console.log('ifwurks');
     }
-    if(document.getElementById('project-card-body')){
-      document.getElementById('project-card-body').scrollBy(0, -13)
-      console.log(document.getElementById('project-card-body').scrollTop)
-    }
+    // if(document.getElementById('project-card-body')){
+    //   document.getElementById('project-card-body').scrollBy(0, -13)
+    //   console.log(document.getElementById('project-card-body').scrollTop)
+    // }
   }
 
   scrollDown = () => {
@@ -310,11 +350,14 @@ class App extends PureComponent {
 
   render() {
     return (
-        <div className='machine' id='machine' tabindex="0"
-        onKeyDown={this.handleKeydown}
-        onKeyUp={this.handleKeyUp}
-        onClick={this.handleMachine}
-      >
+        <div
+          className='machine'
+          id='machine'
+          tabindex="0"
+          onKeyDown={this.handleKeydown}
+          onKeyUp={this.handleKeyUp}
+          onClick={_ => this.handleMachine}
+        >
         <div className='screen-holder'>
           <div className='screen'>
             <div className='screen-noise-effect'></div>
@@ -329,7 +372,12 @@ class App extends PureComponent {
                 cardState={{skills: this.state.skills, bio: this.state.profileInfo, projects: this.state.projects}}
                 visabilaty={this.state.sidebarVisability}/>
               <ProfileCard card={this.state.profileInfo}/>
-              <SkillsCard card={this.state.skills} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
+              <SkillsCard
+                card={this.state.skills}
+                chevronTop={this.state.chevronTop}
+                chevronBottom={this.state.chevronBottom}
+                chevClick={this.handleScrollClick}
+              />
               <ProjectsCard card={this.state.projects} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
               </div>
             }

@@ -15,7 +15,7 @@
   }
 }
 
-@@keyframes buttonClick {
+@keyframes buttonClick {
   0% {
     margin-top: 0px;
     box-shadow: 0px 3px black;
@@ -30,7 +30,61 @@
   }
 }
 
+@keyframes sidebarMove {
+  0% {
+    margin-left: -380px;
+  }
+  60% {
+    margin-left: 40px;
+  }
+  75% {
+    margin-left: -10px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+@keyframes titleMove {
+  0% {
+    opacity: 1;
+    margin-right: 380px;
+    margin-left: -380px;
+  }
+  60% {
+    opacity: 1;
+    margin-left: 20px;
+  }
+  75% {
+    opacity: 1;
+    margin-left: -1px;
+  }
+  100% {
+    opacity: 1;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+@keyframes buttonShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .sidebar {
+  postion: absolute;
+  display: inline-block;
+  width: 300px;
+  height: 70%;
+  margin-left: 80px;
+  z-index: 1;
+}
+
+.sidebarAlphav0.9 {
   postion: absolute;
   display: inline-block;
   width: 225px;
@@ -42,6 +96,8 @@
   width: 100%;
   height: 100%;
   margin-top: 90px;
+  animation: sidebarMove 0.4s;
+  animation-timing-function: ease-in;
 }
 
 .sidebar-hidden {
@@ -50,6 +106,7 @@
 
 .sidebar-button {
   position: relative;
+  cursor: pointer;
   width: 100%;
   height: 55px;
   background-color: white;
@@ -58,15 +115,38 @@
   border-radius: 4px;
 }
 
-.sidebar-button:focus {
+.sidebar-button-title:disabled {
+  position: relative;
+  width: 100%;
+  opacity: 0;
+  height: 55px;
+  color: white;
+  font-size: 1.5rem;
+  border: 1;
+  border-radius: 4px;
   top: -4px;
+  box-shadow: 1px 4px black;
+  background-color: blue;
+  outline:0;
+  animation: titleMove 1s;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+.sidebar-button:hover {
+  top: -4px;
+  opacity: 1;
   animation: buttonFade 0.4s;
   box-shadow: 1px 4px black;
   background-color: purple;
   outline:0;
 }
 
-.sidebar-button:active {
-  animation: buttonClick 1s;
+.sidebar-button:focus {
+  top: -4px;
+  opacity: 1;
+  animation: buttonFade 0.4s;
+  box-shadow: 1px 4px black;
   background-color: purple;
+  outline:0;
 }

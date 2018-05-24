@@ -21,6 +21,17 @@ button {
 .screen-holder {
   position: absolute;
   top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: grey;
+  border: 2px solid black;
+  z-index: 10;
+}
+
+.scrnhldrAlphav0.9{
+  position: absolute;
+  top: 0px;
   left: calc(50vw - (30vw));
   height: 75.7vh;
   width: 60vw;
@@ -56,6 +67,7 @@ button {
   z-index: 100;
   opacity: 0.022;
   z-index: 9;
+  pointer-events: none;
 }
 
 .screen-scan-effect {
@@ -68,6 +80,7 @@ button {
   background-size:cover;
   opacity: 0.035;
   z-index: 10;
+  pointer-events: none;
 }
 
 .screen-blur-effect {
@@ -125,11 +138,11 @@ button {
     overflow: hidden;
     margin: 50px 0 70px 65px;
   }
-
+/*
   @media screen and (max-height: 845px){
 
     .screen-holder {
       height: 76vh;
     }
 
-  }
+  } */

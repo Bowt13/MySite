@@ -13,6 +13,31 @@ class SkillsCard extends PureComponent {
     dissed: false,
   }
 
+  MouseHold = (func) => {
+    var mouseStatus = 'up';
+    var mouseTimeout;
+    let images = document.getElementsByTagName("img")
+    images = Array.prototype.slice.call(images)
+
+    console.log(images)
+    console.log(Array.isArray(images))
+
+    if(Array.isArray(images)){
+      const chevrons = images.filter(img => img.name === 'up' || img.name === 'down')
+      chevrons.forEach(img => {
+        img.addEventListener("mousedown",function() {
+          func(img.name)
+        }, false);
+        img.addEventListener("mouseup",function() {
+          func('cancel')
+        }, false);
+      })
+    }
+  }
+  componentDidMount(){
+    this.MouseHold(this.props.chevClick)
+  }
+
   render() {
     const skills = [
       {name: 'HTML5', percentage: 85},
@@ -34,9 +59,7 @@ class SkillsCard extends PureComponent {
       {name: 'Git', percentage: 65},
       {name: 'Ruby', percentage: 75},
     ]
-    const {ul} = this.state
-    const {card} = this.props
-    console.log(`ul-${ul}`);
+    const {card, chevClick} = this.props
     return (
       <div className='card'>
         <div className={`card-${card}`}>
@@ -45,7 +68,7 @@ class SkillsCard extends PureComponent {
                 Skills:<br/>
               </p>
           </div>
-          <img className={`chevron-top-${this.props.chevronTop}`} src={require(`../../img/chevron-${this.props.chevronTop}.gif`)} alt="chevron"/>
+          <img name='up' className={`chevron-top-${this.props.chevronTop}`} src={require(`../../img/chevron-${this.props.chevronTop}.gif`)} alt="chevron"/>
           <div className='card-body' id='skill-card-body' tabindex='10'>
             {skills.map(skill => (
               <div className='skills-body-content'>
@@ -53,7 +76,7 @@ class SkillsCard extends PureComponent {
               </div>
             ))}
           </div>
-          <img className={`chevron-bottom-${this.props.chevronBottom}`} src={require(`../../img/chevron-${this.props.chevronBottom}.gif`)} alt="chevron"/>
+          <img name='down' className={`chevron-bottom-${this.props.chevronBottom}`} src={require(`../../img/chevron-${this.props.chevronBottom}.gif`)} alt="chevron"/>
         </div>
       </div>
     );
