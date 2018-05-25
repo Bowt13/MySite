@@ -7,7 +7,7 @@ import './App.css';
   //Cards
   import SkillsCard from './containers/cards/SkillsCard.js'
   import ProfileCard from './containers/cards/ProfileCard.js'
-  import ProjectsCard from './containers/cards/ProjectsCard.js'
+  import ProjectCard from './containers/cards/ProjectCard.js'
   //games
   import SpaceShooter from './containers/games/spaceShooter/Game.js'
 
@@ -20,7 +20,7 @@ class App extends PureComponent {
       sidebarVisability: 'hidden',
       profileInfo: 'hidden',
       skills: 'hidden',
-      projects: 'hidden',
+      project: 'hidden',
       onePlayer: 'hidden',
     //controlls/
       joystick: '',
@@ -32,17 +32,18 @@ class App extends PureComponent {
       chevronTop: 'off',
       chevronBottom: 'off',
       game: false,
+      projectName: '',
+      time: false,
+      seconds: 10*1000,
   }
 
   handleMachine = (event) => {
     event.preventDefault
-    if(event.nativeEvent.screenX === 0){
-      return
-    }
-    else {
-      if(document.getElementById('bio')){
-        document.getElementById('bio').focus()
-      }
+    if(this.state.introScreen === 'visable' && this.state.time){
+      this.setState({
+        introScreen: 'between',
+      })
+      setTimeout(this.handleIntroScreen, 1900)
     }
   }
 
@@ -65,6 +66,10 @@ class App extends PureComponent {
           //setTimeout(function() {document.getElementById('bio').focus()}, 50)
           document.getElementById('machine').focus()
           break;
+        case 'RPS':
+          this.setState({
+            projectName: 'RPS',
+          })
         default:
           break;
       }
@@ -257,7 +262,7 @@ class App extends PureComponent {
       this.setState({
         arcadeButton: 'unpressed',
       })
-      if(this.state.introScreen === 'visable'){
+      if(this.state.introScreen === 'visable' && this.state.time){
         this.setState({
           introScreen: 'between',
         })
@@ -346,6 +351,9 @@ class App extends PureComponent {
 
   componentDidMount() {
     document.getElementById('machine').focus()
+    setTimeout(function() { this.setState({
+      time: true
+    }); }.bind(this), this.state.seconds)
   }
 
   render() {
@@ -356,9 +364,9 @@ class App extends PureComponent {
           tabindex="0"
           onKeyDown={this.handleKeydown}
           onKeyUp={this.handleKeyUp}
-          onClick={_ => this.handleMachine}
+          onClick={this.handleMachine}
         >
-        <div className='screen-holder'>
+        <div className='screen-holder' onClick={this.handleMachine}>
           <div className='screen'>
             <div className='screen-noise-effect'></div>
             <div className='screen-scan-effect'></div>
@@ -378,7 +386,12 @@ class App extends PureComponent {
                 chevronBottom={this.state.chevronBottom}
                 chevClick={this.handleScrollClick}
               />
-              <ProjectsCard card={this.state.projects} chevronTop={this.state.chevronTop} chevronBottom={this.state.chevronBottom}/>
+              <ProjectCard
+                card={this.state.project}
+                project={'RPS'}
+                chevronTop={this.state.chevronTop}
+                chevronBottom={this.state.chevronBottom}
+              />
               </div>
             }
             {this.state.game &&

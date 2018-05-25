@@ -3,15 +3,19 @@ import React, {PureComponent} from 'react'
 import Project from '../../components/projects/Project.js'
 
 import './Card.css'
-import './ProjectsCard.css';
+import './ProjectCard.css';
 
-class ProjectsCard extends PureComponent {
+class ProjectCard extends PureComponent {
   state = {
     counter: 0,
     dissed: false,
   }
 
+  componentWillMount(){
+  }
+
   render() {
+    let project
     const projects = [
       { name: 'Rock Paper Soldiers',
         explain: 'Rock Paper Soldiers is a online multiplayer "rock paper scicor" like game.',
@@ -38,30 +42,39 @@ class ProjectsCard extends PureComponent {
         explainBackend: '',
       },
     ]
+    switch (this.props.project) {
+      case "RPS":
+        project = projects[0]
+        break;
+      case "SEA":
+        project = projects[1]
+        break;
+      case "FOM":
+        project = projects[2]
+        break;
+      default:
+       console.warn("project doesn't exist");
+    }
     const {ul} = this.state
     const {card} = this.props
-    console.log(`ul-${ul}`);
     return (
       <div className='card'>
         <div className={`card-${card}`}>
           <div className= 'card-header'>
               <p className= 'card-title'>
-                Projects:<br/>
+                {project.name}<br/>
               </p>
           </div>
           <img className={`chevron-top-${this.props.chevronTop}`} src={require(`../../img/chevron-${this.props.chevronTop}.gif`)} alt="chevron"/>
           <div className='card-body' id='project-card-body' tabindex='10'>
-            {projects.map(project => (
               <div className='projects-body-content'>
                 <Project
-                  name={project.name}
                   explain={project.explain}
                   imgUrl={project.imgUrl}
                   urlFrontend={project.urlFrontend}
                   urlBackend={project.urlBackend}
                 />
               </div>
-            ))}
           </div>
           <img className={`chevron-bottom-${this.props.chevronBottom}`} src={require(`../../img/chevron-${this.props.chevronBottom}.gif`)} alt="chevron"/>
         </div>
@@ -70,4 +83,4 @@ class ProjectsCard extends PureComponent {
   }
 }
 
-export default ProjectsCard;
+export default ProjectCard;

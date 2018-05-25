@@ -61,7 +61,7 @@
 
 .card-body {
   overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-x: hidden;
   text-align: left;
   whiteSpace: nowrap;
   width: 98%;

@@ -41,9 +41,9 @@ button {
 }
 
 .screen {
-  position: absolute;
+  position: relative;
   overflow: hidden;
-  top: 32px;
+  top: calc(50% - (92% / 2));
   left: calc(50% - (93.7% / 2));
   height: 92%;
   width: 93.7%;
@@ -136,11 +136,3 @@ button {
     overflow: hidden;
     margin: 50px 0 70px 65px;
   }
-/*
-  @media screen and (max-height: 845px){
-
-    .screen-holder {
-      height: 76vh;
-    }
-
-  } */

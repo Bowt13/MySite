@@ -1,6 +1,6 @@
 @keyframes text_right2left {
   0% {
-    margin-left: 100%;
+    margin-left: 130%;
   }
   100% {
     margin-left: -100%;
@@ -39,7 +39,7 @@
     font-size: 400px;
   }
   100 % {
-    font-size: 40px;
+    font-size: 60px;
   }
 }
 
@@ -79,11 +79,12 @@
   margin-top: 15%;
   color: white;
   font-size: 25px;
-  margin-left: 100%;
+  margin-left: 130%;
   animation-name: text_right2left;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  animation-delay: 13s;
   white-space: nowrap;
 }
 
@@ -91,9 +92,9 @@
   position: relative;
   vertical-align: middle;
   color: yellow;
-  font-size: 40px;
+  font-size: 60px;
   white-space: nowrap;
-  text-shadow: -3px 6px black, -4px 7px yellow;
+  text-shadow: -3px 6px black, -4px 7px yellow, -3px -6px black, -4px -8px yellow, 3px 6px black, 4px 7px yellow, 3px -6px black, 4px -8px yellow;
   animation-name: space_in_text;
   animation-duration: 13s;
   animation-iteration-count: 1;
