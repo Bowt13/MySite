@@ -5,6 +5,7 @@ import './Project.css';
 class Project extends PureComponent {
 
   handleIconClick = (url) => {
+    console.log(url)
     window.open(url)
   }
 
@@ -14,7 +15,7 @@ class Project extends PureComponent {
         <div className='project-image-'>
           <img className='project-image' src={this.props.imgUrl}></img>
         </div>
-        <p className='project-tag'>Frontend:</p><img className='github-icon' onClick={_ => this.handleIconClick(this.props.urlFrontend)} src={require('../../img/icons/github.png')}></img>
+        <p className='project-tag' onClick={_ => this.handleIconClick(this.props.urlFrontend)}>Frontend:</p><img className='github-icon' onClick={_ => this.handleIconClick(this.props.urlFrontend)} src={require('../../img/icons/github.png')}></img>
 
         <p className='project-tag'>Backend:</p><img className='github-icon' link={this.props.urlBackend} src={require('../../img/icons/github.png')}></img>
         <div className='project-explain-container'>
