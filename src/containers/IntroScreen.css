@@ -19,6 +19,30 @@
   }
 }
 
+@keyframes space_in {
+  0% {
+    margin-top: 60%;
+    width: 1200%;
+    margin-left: calc(50% - (1200% / 2));
+    -webkit-transform: perspective(10px) rotateX(5deg);
+  }
+  100 % {
+    margin-top: 30%;
+    width: 70%;
+    margin-left: calc(50% - (70% / 2));
+    -webkit-transform: perspective(10px) rotateX(1deg);
+  }
+}
+
+@keyframes space_in_text {
+  0% {
+    font-size: 400px;
+  }
+  100 % {
+    font-size: 40px;
+  }
+}
+
 .intro-screen-visable{
   position: absolute;
   text-align: center;
@@ -26,6 +50,9 @@
   width: 100%;
   overflow: hidden;
   background-color: purple;
+  background-image: url('../img/backgrounds/introScreenBg.gif');
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 .intro-screen-between{
@@ -35,6 +62,8 @@
   width: 100%;
   overflow: hidden;
   background-color: purple;
+  background-repeat: no-repeat;
+  background-size:cover;
   animation-name: fade_out;
   animation-duration: 2s;
   animation-fill-mode: both;
@@ -79,39 +108,48 @@
   font-size: 40px;
   white-space: nowrap;
   text-shadow: -3px 6px black, -4px 7px yellow;
+  animation-name: space_in_text;
+  animation-duration: 13s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
 }
 
 .section_8bit{
-width: 70%;
-margin-left: calc(50% - (70% / 2));
-margin-top: 30%;
-border-left: 10px solid yellow;
-border-right: 10px solid yellow;
-position: relative;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
+  width: 70%;
+  margin-left: calc(50% - (70% / 2));
+  margin-top: 30%;
+  border-left: 10px solid yellow;
+  border-right: 10px solid yellow;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  animation-name: space_in;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  -webkit-transform: perspective(0px) rotateX(1deg);
 }
 
 .section_8bit .wrapper{
-display: block;
-color: yellow;
-padding: 10px;
-margin: -10px 0;
-border-top: 10px solid yellow;
-border-bottom: 10px solid yellow;
+  display: block;
+  color: yellow;
+  padding: 10px;
+  margin: -10px 0;
+  border-top: 10px solid yellow;
+  border-bottom: 10px solid yellow;
 }
 
 .section_8bit::before,
 .section_8bit::after,
 .section_8bit .wrapper::before,
 .section_8bit .wrapper::after{
-content: '';
-width: 110px;
-height: 10px;
-display: block;
-position: absolute;
-background: yellow;
+  content: '';
+  width: 110px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  background: yellow;
 }
 .section_8bit::before{ top: -5px; left: -5px; }
 .section_8bit::after{ top: -5px; right: -5px; }

@@ -387,7 +387,9 @@ class App extends PureComponent {
             </div>
           </div>
         </div>
-        <MachineCabinet joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>
+        {false &&
+          <MachineCabinet joystick={this.state.joystick.toLowerCase()} arcadeButton={this.state.arcadeButton}/>
+        }
       </div>
     );
   }

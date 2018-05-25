@@ -61,10 +61,9 @@
 
 .card-body {
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
   text-align: left;
   whiteSpace: nowrap;
-  overflow: hidden;
   width: 98%;
   height: 70.6%;
   background: linear-gradient(to right, #f5f5f5, #fafafa);
