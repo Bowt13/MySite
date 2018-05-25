@@ -87,20 +87,6 @@
   white-space: nowrap;
 }
 
-.intro-text-2 {
-  position: absolute;
-  margin-top: 20%;
-  color: white;
-  font-size: 25px;
-  left: 250px;
-  margin-left: 100%;
-  animation-name: text_right2left;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  white-space: nowrap;
-}
-
 .intro-title {
   position: relative;
   vertical-align: middle;

@@ -19,11 +19,10 @@ class IntroScreen extends Component {
   render() {
     return (
       <div className={`intro-screen-${this.props.visabilaty}`}>
-        <h1 className='intro-text'>Insert Your Coin Please Try Again.</h1>
-        <h1 className='intro-text-2'>Press return.</h1>
+        <h1 className='intro-text'>Insert Your Coin Please Press Return.</h1>
         <section class="section_8bit">
           <div class="wrapper">
-           <h1 className='intro-title'>Nigel's Site</h1>
+           <h1 className='intro-title'>My Site</h1>
           </div>
         </section>
         {this.props.visable === 'visable' &&

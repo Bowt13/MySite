@@ -139,7 +139,12 @@
   animation: buttonFade 0.4s;
   box-shadow: 1px 4px black;
   background-color: purple;
-  outline:0;
+}
+
+.sidebar-button:active {
+  top: -0px;
+  opacity: 1;
+  background-color: purple;
 }
 
 .sidebar-button:focus {
