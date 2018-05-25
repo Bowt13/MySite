@@ -15,10 +15,10 @@ class ProjectCard extends PureComponent {
   }
 
   render() {
-    let project
+    let currentProject
     const projects = [
       { name: 'Rock Paper Soldiers',
-        explain: 'Rock Paper Soldiers is a online multiplayer "rock paper scicor" like game.',
+        explain: 'Rock Paper Soldiers is a online multiplayer "rock paper scicor" like game. A friend and me made while we where attending Codaisseur',
         imgUrl: require('../../img/TEST.gif'),
         urlFrontend: 'https://github.com/Bowt13/Rock.Paper.Soldiers_Frontend',
         explainFrontend: '',
@@ -42,21 +42,21 @@ class ProjectCard extends PureComponent {
         explainBackend: '',
       },
     ]
-    switch (this.props.project) {
+    const {ul} = this.state
+    const {card, project} = this.props
+    switch (project) {
       case "RPS":
-        project = projects[0]
+        currentProject = projects[0]
         break;
       case "SEA":
-        project = projects[1]
+        currentProject = projects[1]
         break;
       case "FOM":
-        project = projects[2]
+        currentProject = projects[2]
         break;
       default:
        console.warn("project doesn't exist");
     }
-    const {ul} = this.state
-    const {card} = this.props
     return (
       <div className='card'>
         <div className={`card-${card}`}>
@@ -65,18 +65,16 @@ class ProjectCard extends PureComponent {
                 {project.name}<br/>
               </p>
           </div>
-          <img className={`chevron-top-${this.props.chevronTop}`} src={require(`../../img/chevron-${this.props.chevronTop}.gif`)} alt="chevron"/>
-          <div className='card-body' id='project-card-body' tabindex='10'>
-              <div className='projects-body-content'>
-                <Project
-                  explain={project.explain}
-                  imgUrl={project.imgUrl}
-                  urlFrontend={project.urlFrontend}
-                  urlBackend={project.urlBackend}
-                />
-              </div>
+          <div className='card-body project-card' id='project-card-body' tabindex='10'>
+            <div className='projects-body-content'>
+              <Project
+                explain={currentProject.explain}
+                imgUrl={currentProject.imgUrl}
+                urlFrontend={currentProject.urlFrontend}
+                urlBackend={currentProject.urlBackend}
+              />
+            </div>
           </div>
-          <img className={`chevron-bottom-${this.props.chevronBottom}`} src={require(`../../img/chevron-${this.props.chevronBottom}.gif`)} alt="chevron"/>
         </div>
       </div>
     );
