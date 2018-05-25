@@ -62,7 +62,7 @@ class ProjectCard extends PureComponent {
         <div className={`card-${card}`}>
           <div className= 'card-header'>
               <p className= 'card-title'>
-                {project.name}<br/>
+                {currentProject.name}
               </p>
           </div>
           <div className='card-body project-card' id='project-card-body' tabindex='10'>

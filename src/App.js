@@ -34,7 +34,7 @@ class App extends PureComponent {
       game: false,
       projectName: '',
       time: false,
-      seconds: 10*1000,
+      seconds: 0*1000,
   }
 
   handleMachine = (event) => {

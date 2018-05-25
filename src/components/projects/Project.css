@@ -26,15 +26,6 @@
   cursor: pointer;
 }
 
-.github-icon {
-  position: relative;
-  display: inline-block;
-  float: left;
-  margin-top: 2%;
-  margin-left: 2%;
-  cursor: pointer;
-}
-
 .project-explain-container {
   width: 97.7%;
   height: 100%;

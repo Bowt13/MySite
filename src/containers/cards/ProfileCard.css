@@ -4,37 +4,47 @@
 }
 
 .profile-body-content {
-  width: 100%;
+  width: 97.7%;
   height: 100%;
   margin-left: 1%;
   display: inline-block;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .bio-pic {
   position: relative;
-  display: inline-block;
   top: 0;
   left: 0;
-  float: right;
+  float: left;
   height: auto;
   margin-top: 20px;
   margin-right: 60px;
   width: 20%;
 }
 
+.content-title {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  font-size: 30px;
+  width: 200%;
+  height: 1px;
+  float:left;
+}
+
 .content-left {
   position: relative;
-  width: 26%;
   display: inline-block;
+  width: 31%;
   text-align: right;
   float:left;
 }
 
 .content-right {
   position: relative;
-  width: 34%;
   display: inline-block;
+  width: 34%;
   margin-left: 0px;
   text-align: left;
   float:left;

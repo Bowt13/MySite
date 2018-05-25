@@ -136,3 +136,14 @@ button {
     overflow: hidden;
     margin: 50px 0 70px 65px;
   }
+
+.clickable-icon {
+  position: relative;
+  display: inline-block;
+  float: left;
+  height: 35px;
+  width: 35px;
+  margin-top: 2%;
+  margin-left: 2%;
+  cursor: pointer;
+}

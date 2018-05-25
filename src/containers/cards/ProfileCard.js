@@ -49,10 +49,31 @@ class ProfileCard extends PureComponent {
     }
   }
 
+  handleClick = (type) => {
+    let win
+    switch (type) {
+      case 'linkedIn':
+        win = window.open('https://www.linkedin.com/in/nigel-brown-b7983a151/');
+        win.focus()
+        break;
+      case 'gitHub':
+        win = window.open('https://github.com/Bowt13/')
+        win.focus()
+        break;
+      default:
+
+    }
+  }
+
   render() {
     const profileInfo = {
       name: 'Nigel Brown',
       birthDate: '13-03-1990',
+      placeOfBirth: 'Rotterdam',
+      street: 'Larenseweg 34N',
+      postcode: '1221 CN',
+      city: 'Hilversum',
+      nationality: 'Dutch',
       training: 'Full-Stack',
       training2: 'web developer',
       trainingAt: 'Codaisseur Academy',
@@ -60,7 +81,6 @@ class ProfileCard extends PureComponent {
     }
     const {ul} = this.state
     const {card} = this.props
-    console.log(`ul-${ul}`);
     return (
       <div className='card'>
         <div className={`card-${card}`}>
@@ -72,26 +92,54 @@ class ProfileCard extends PureComponent {
           <div className='card-body profile-card' id='card-body'>
             <div className='profile-body-content' id='check'>
               <div className='content-left'>
-                <p>
-                  Name:<br/>
-                  Birthdate:<br/>
+                  <h4 className='content-title'>Personal Info:</h4><br/>
+                  <p>
+                    Name:<br/>
+                    Birthdate:<br/>
+                    Place of birth:<br/>
+                    Nationality:<br/>
+                  </p>
                   <br/>
-                  Training:<br/>
+                  <h4 className='content-title'>Adress:</h4><br/>
+                  <p>
+                    Street:<br/>
+                    City:<br/>
+                    Postcode:<br/>
+                  </p>
                   <br/>
-                  At:<br/>
-                </p>
+                  <h4 className='content-title'>Education:</h4><br/>
+                  <p>
+                    Training:<br/>
+                  <br/>
+                    At:<br/>
+                  </p>
               </div>
               <div className='content-right'>
-                <p>
-                  {profileInfo.name}<br/>
-                  {profileInfo.birthDate}<br/>
+                  <h4 className='content-title'></h4><br/>
+                  <p>
+                    {profileInfo.name}<br/>
+                    {profileInfo.birthDate}<br/>
+                    {profileInfo.placeOfBirth}<br/>
+                    {profileInfo.nationality}<br/>
+                  </p>
                   <br/>
-                  {profileInfo.training}<br/>
-                  {profileInfo.training2}<br/>
-                  {profileInfo.trainingAt}<br/>
-                </p>
+                  <h4 className='content-title'></h4><br/>
+                  <p>
+                    {profileInfo.street}<br/>
+                    {profileInfo.city}<br/>
+                    {profileInfo.postcode}<br/>
+                  </p>
+                  <br/>
+                  <h4 className='content-title'></h4><br/>
+                  <p>
+                    {profileInfo.training}<br/>
+                    {profileInfo.training2}<br/>
+                    {profileInfo.trainingAt}<br/>
+                  </p>
               </div>
               <img className='bio-pic' src={require('../../img/BioPix3.gif')} alt='HeadShot'/>
+              <img className='clickable-icon' onClick={_ => this.handleClick('gitHub')} src={require('../../img/icons/github.png')}></img>
+              <img className='clickable-icon' onClick={_ => this.handleClick('linkedIn')} src={require('../../img/icons/linkedin.png')}></img>
             </div>
           </div>
         </div>

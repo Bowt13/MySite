@@ -5,7 +5,7 @@
     box-shadow: 0px 1px black;
   }
   60%{
-    op: -2px;
+    top: -2px;
     box-shadow: 0.5px 2px black;
   }
   100% {
@@ -139,6 +139,7 @@
   animation: buttonFade 0.4s;
   box-shadow: 1px 4px black;
   background-color: purple;
+  transition: background 1s;
 }
 
 .sidebar-button:active {
@@ -154,4 +155,5 @@
   box-shadow: 1px 4px black;
   background-color: purple;
   outline:0;
+  transition: background 1s;
 }
