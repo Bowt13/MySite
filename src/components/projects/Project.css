@@ -19,13 +19,6 @@
   background-color: purple;
 }
 
-.project-tag {
-  position: relative;
-  display: inline-block;
-  float: left;
-  cursor: pointer;
-}
-
 .project-explain-container {
   width: 97.7%;
   height: 100%;

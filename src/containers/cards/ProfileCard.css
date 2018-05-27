@@ -36,7 +36,8 @@
 .content-left {
   position: relative;
   display: inline-block;
-  width: 31%;
+  width: 39%;
+  margin-left: 0.5%;
   text-align: right;
   float:left;
 }
@@ -48,4 +49,12 @@
   margin-left: 0px;
   text-align: left;
   float:left;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 1%;
+  width: 100%;
+  float: left;
 }

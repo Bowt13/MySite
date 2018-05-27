@@ -82,7 +82,7 @@ button {
 }
 
 .screen-blur-effect {
-  filter: blur(0.6px);
+  filter: blur(0.2px);
 }
 
 .machine {
@@ -145,5 +145,12 @@ button {
   width: 35px;
   margin-top: 2%;
   margin-left: 2%;
+  cursor: pointer;
+}
+
+.icon-tag {
+  position: relative;
+  display: inline-block;
+  float: left;
   cursor: pointer;
 }

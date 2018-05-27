@@ -18,7 +18,7 @@ class ProjectCard extends PureComponent {
     let currentProject
     const projects = [
       { name: 'Rock Paper Soldiers',
-        explain: 'Rock Paper Soldiers is a online multiplayer "rock paper scicor" like game. A friend and me made while we where attending Codaisseur',
+        explain: 'Rock Paper Soldiers is a online multiplayer "rock paper scicor" like game. A friend and me made while we where attending Codaisseur. I did the Front-end and my friend did the Back-end',
         imgUrl: require('../../img/TEST.gif'),
         urlFrontend: 'https://github.com/Bowt13/Rock.Paper.Soldiers_Frontend',
         explainFrontend: '',

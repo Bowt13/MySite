@@ -115,7 +115,7 @@ class ProfileCard extends PureComponent {
                   </p>
               </div>
               <div className='content-right'>
-                  <h4 className='content-title'></h4><br/>
+                  <h4 className='content-title'> </h4><br/>
                   <p>
                     {profileInfo.name}<br/>
                     {profileInfo.birthDate}<br/>
@@ -123,23 +123,28 @@ class ProfileCard extends PureComponent {
                     {profileInfo.nationality}<br/>
                   </p>
                   <br/>
-                  <h4 className='content-title'></h4><br/>
+                  <h4 className='content-title'> </h4><br/>
                   <p>
                     {profileInfo.street}<br/>
                     {profileInfo.city}<br/>
                     {profileInfo.postcode}<br/>
                   </p>
                   <br/>
-                  <h4 className='content-title'></h4><br/>
+                  <h4 className='content-title'> </h4><br/>
                   <p>
                     {profileInfo.training}<br/>
                     {profileInfo.training2}<br/>
                     {profileInfo.trainingAt}<br/>
                   </p>
               </div>
-              <img className='bio-pic' src={require('../../img/BioPix3.gif')} alt='HeadShot'/>
-              <img className='clickable-icon' onClick={_ => this.handleClick('gitHub')} src={require('../../img/icons/github.png')}></img>
-              <img className='clickable-icon' onClick={_ => this.handleClick('linkedIn')} src={require('../../img/icons/linkedin.png')}></img>
+              {false &&
+                  <img className='bio-pic' src={require('../../img/BioPix3.gif')} alt='HeadShot'/>
+              }
+              <div className='icon-container'>
+              <h4 className='content-title'>Links:</h4><br/>
+                <p className='icon-tag' onClick={_ => this.handleIconClick(this.props.urlFrontend)}>Github:</p><img className='clickable-icon' onClick={_ => this.handleClick('gitHub')} src={require('../../img/icons/github.png')}></img>
+                <p className='icon-tag' onClick={_ => this.handleIconClick(this.props.urlFrontend)}>LinkedIn:</p><img className='clickable-icon' onClick={_ => this.handleClick('linkedIn')} src={require('../../img/icons/linkedin.png')}></img>
+              </div>
             </div>
           </div>
         </div>
