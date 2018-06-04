@@ -4,6 +4,7 @@ Go [here](https://bowt13.github.io/MySite/) for the site.
 
 ## To Do
 
+- Add all projects.
 - Add screenshots of projects.
 - Remove document.getElementById().
 - Add my music.
