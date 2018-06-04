@@ -1,28 +1,59 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 
-import './Project.css';
+import './Project.css'
 
 class Project extends PureComponent {
+	handleIconClick = url => {
+		window.open(url)
+	}
 
-  handleIconClick = (url) => {
-    console.log(url)
-    window.open(url)
-  }
+	handleClick = url => {
+		let win
+		win = window.open('url')
+		win.focus()
+	}
 
-  render() {
-    return (
-      <div className='project'>
-        <div className='project-image-'>
-          <img className='project-image' src={this.props.imgUrl}></img>
-        </div>
-        <p className='icon-tag' onClick={_ => this.handleIconClick(this.props.urlFrontend)}>Frontend:</p><img className='clickable-icon' onClick={_ => this.handleIconClick(this.props.urlFrontend)} src={require('../../img/icons/github.png')}></img>
-        <p className='icon-tag'>Backend:</p><img className='clickable-icon' link={this.props.urlBackend} src={require('../../img/icons/github.png')}></img>
-        <div className='project-explain-container'>
-          <p className='project-explain'>{this.props.explain}</p>
-        </div>
-      </div>
-    );
-  }
+	render() {
+		const { imgUrl, urlFrontend, urlBackend, explain } = this.props
+		return (
+			<div className="project">
+				<div className="project-image-">
+					<img className="project-image" src={imgUrl} />
+				</div>
+				{urlFrontend.length > 0 && (
+					<div>
+						<p
+							className="icon-tag"
+							onClick={_ => this.handleIconClick(urlFrontend)}>
+							Frontend:
+						</p>
+						<img
+							className="clickable-icon"
+							onClick={_ => this.handleIconClick(urlFrontend)}
+							src={require('../../img/icons/github.png')}
+						/>
+					</div>
+				)}
+				{urlBackend.length > 0 && (
+					<div>
+						<p
+							className="icon-tag"
+							onClick={_ => this.handleIconClick(urlBackend)}>
+							Backend:
+						</p>
+						<img
+							className="clickable-icon"
+							onClick={_ => this.handleIconClick(urlBackend)}
+							src={require('../../img/icons/github.png')}
+						/>
+					</div>
+				)}
+				<div className="project-explain-container">
+					<p className="project-explain">{explain}</p>
+				</div>
+			</div>
+		)
+	}
 }
 
-export default Project;
+export default Project

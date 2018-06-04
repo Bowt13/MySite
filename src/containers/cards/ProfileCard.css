@@ -1,15 +1,8 @@
-.profile-card {
-  height: 90%;
-  overflow: hidden;
-}
-
 .profile-body-content {
   width: 97.7%;
   height: 100%;
   margin-left: 1%;
   display: inline-block;
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .bio-pic {

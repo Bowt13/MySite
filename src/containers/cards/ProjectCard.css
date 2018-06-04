@@ -1,16 +1,7 @@
-.project-card {
-  height: 90%;
-  overflow: hidden;
-}
-
-.projects-body-content {
-  width: 100%;
+.project-body-content {
+  width: 97.7%;
   height: 100%;
   margin-left: 1%;
   display: inline-block;
   overflow: hidden;
-}
-
-#project-card-body {
-  margin-top: 0.5%;
 }
